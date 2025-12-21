@@ -11,9 +11,9 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import driverImage from "/assets/service-driver.svg";
-import airportImage from "/assets/airport-juanda.svg";
-import familyImage from "/assets/family-travel.svg";
+const driverImage = "/assets/service-driver.svg";
+const airportImage = "/assets/airport-juanda.svg";
+const familyImage = "/assets/family-travel.svg";
 
 const WHATSAPP_NUMBER = "6281234567890";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;

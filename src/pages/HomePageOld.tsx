@@ -28,14 +28,14 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-import heroImage from "/assets/hero-surabaya.svg";
-import driverImage from "/assets/service-driver.svg";
-import airportImage from "/assets/airport-juanda.svg";
-import familyImage from "/assets/family-travel.svg";
-import carAvanza from "/assets/car-avanza.svg";
-import carInnova from "/assets/car-innova.svg";
-import carBrio from "/assets/car-brio.svg";
-import carFortuner from "/assets/car-fortuner.svg";
+const heroImage = "/assets/hero-surabaya.svg";
+const driverImage = "/assets/service-driver.svg";
+const airportImage = "/assets/airport-juanda.svg";
+const familyImage = "/assets/family-travel.svg";
+const carAvanza = "/assets/car-avanza.svg";
+const carInnova = "/assets/car-innova.svg";
+const carBrio = "/assets/car-brio.svg";
+const carFortuner = "/assets/car-fortuner.svg";
 
 const WHATSAPP_NUMBER = "6281234567890";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;

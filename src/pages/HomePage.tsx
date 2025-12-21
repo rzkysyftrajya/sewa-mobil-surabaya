@@ -224,6 +224,73 @@ const bookingSteps = [
   },
 ];
 
+const armadaServices = [
+  {
+    name: "Toyota Alphard",
+    description: "tamu VIP & eksekutif",
+    image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
+    category: "Luxury MPV",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Alphard untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Toyota Hiace Premio",
+    description: "rombongan & perjalanan grup",
+    image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
+    category: "Big MPV",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Hiace Premio untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Toyota Hiace Commuter",
+    description: "rombongan & perjalanan grup",
+    image: "/assets/armada-lepas-kunci/HIACE-COMMUTER.webp",
+    category: "Big MPV",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Hiace Commuter untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Mitsubishi Pajero",
+    description: "perjalanan luar kota & medan bervariasi",
+    image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
+    category: "SUV",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Mitsubishi Pajero untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Toyota Fortuner",
+    description: "perjalanan luar kota & medan bervariasi",
+    image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
+    category: "SUV",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Fortuner untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Toyota Innova Zenix",
+    description: "perjalanan keluarga & bisnis",
+    image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
+    category: "MPV Premium",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Innova Zenix untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Toyota Innova Reborn",
+    description: "perjalanan keluarga & bisnis",
+    image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
+    category: "MPV",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Innova Reborn untuk sewa mobil dengan sopir di Surabaya",
+  },
+  {
+    name: "Toyota Hilux Double Cabin",
+    description: "perjalanan luar kota & medan bervariasi",
+    image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
+    category: "Pickup",
+    whatsappMessage:
+      "Halo, saya tertarik dengan Toyota Hilux Double Cabin untuk sewa mobil dengan sopir di Surabaya",
+  },
+];
+
 const faqs = [
   {
     question: "Bagaimana cara memesan layanan sewa mobil?",
@@ -258,18 +325,6 @@ const faqs = [
 ];
 
 export default function HomePage() {
-  const renderStarRating = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <span key={i} className="text-primary">
-        {i < rating ? (
-          <Star className="h-4 w-4 fill-primary text-primary" />
-        ) : (
-          <Star className="h-4 w-4 text-muted-foreground" />
-        )}
-      </span>
-    ));
-  };
-
   // Performance Optimizations & Animations
   useEffect(() => {
     // Check for reduced motion preference
@@ -672,7 +727,7 @@ export default function HomePage() {
       </section>
 
       {/* Enhanced Armada Lepas Kunci Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-secondary/30 via-background to-secondary/20 py-16 md:py-24">
+      <section className="relative overflow-x-hidden bg-gradient-to-br from-secondary/30 via-background to-secondary/20 py-16 md:py-24">
         {/* Background decorative elements */}
         <div className="absolute top-10 left-10 w-32 h-32 bg-primary/5 rounded-full floating" />
         <div
@@ -686,15 +741,15 @@ export default function HomePage() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-accent to-accent/80 px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg border border-accent/20">
                 <Key className="h-4 w-4 animate-pulse" />
-                <span className="text-gradient font-bold">Lepas Kunci</span>
+                <span className="text-gradient font-bold">Layanan</span>
               </div>
               <h2 className="text-3xl font-bold md:text-4xl">
-                <span className="text-gradient">Pilihan Armada</span> untuk Sewa
-                Lepas Kunci
+                <span className="text-gradient">Pilihan Armada</span> untuk
+                Layanan
               </h2>
               <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
-                Familiar dengan Surabaya dan ingin menyetir sendiri? Berikut
-                pilihan armada premium yang bisa Anda gunakan.
+                Butuh armada premium untuk kebutuhan perjalanan Anda? Berikut
+                pilihan armada berkualitas yang siap melayani.
               </p>
             </div>
             <Button
@@ -718,7 +773,7 @@ export default function HomePage() {
             {/* Gallery Navigation Dots */}
             <div className="flex justify-center gap-2 mb-8">
               {Array.from(
-                { length: Math.ceil(featuredCars.length / 4) },
+                { length: Math.ceil(armadaServices.length / 4) },
                 (_, i) => (
                   <div
                     key={i}
@@ -731,22 +786,23 @@ export default function HomePage() {
             </div>
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {featuredCars.map((car, index) => (
-                <div key={car.name} className="group relative">
+              {armadaServices.map((armada, index) => (
+                <div key={armada.name} className="group relative">
                   {/* Main Car Card */}
                   <div className="card-3d hover-lift relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-br from-card to-card/80 shadow-xl backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10">
                     {/* Background gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     {/* Car Image Container */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-muted/50">
+                    <div className="relative w-full aspect-square overflow-hidden bg-muted/50">
                       {/* Loading skeleton */}
                       <div className="absolute inset-0 skeleton" />
 
                       <img
-                        src={car.image}
-                        alt={car.model}
-                        className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                        src={armada.image}
+                        alt={armada.name}
+                        className="w-full h-full object-contain transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                        loading="lazy"
                         onLoad={(e) => {
                           e.currentTarget.previousElementSibling?.classList.remove(
                             "skeleton"
@@ -773,23 +829,21 @@ export default function HomePage() {
                       {/* Car Category Badge */}
                       <div className="mb-3 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 px-3 py-1 text-xs font-semibold text-primary border border-primary/20">
                         <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                        {car.name}
+                        {armada.category}
                       </div>
 
                       {/* Car Model */}
                       <h3 className="mb-3 text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {car.model}
+                        {armada.name}
                       </h3>
 
                       {/* Car Specifications */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Users className="h-4 w-4 text-primary" />
-                          <span className="font-medium">{car.capacity}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <MapPin className="h-4 w-4 text-primary" />
-                          <span className="text-xs">{car.useCase}</span>
+                          <span className="font-medium">
+                            {armada.description}
+                          </span>
                         </div>
                       </div>
 
@@ -810,7 +864,9 @@ export default function HomePage() {
                           asChild
                         >
                           <a
-                            href={`${WHATSAPP_LINK}&text=Halo,%20saya%20tertarik%20dengan%20${car.model}%20untuk%20sewa%20mobil%20di%20Surabaya`}
+                            href={`${WHATSAPP_LINK}&text=${encodeURIComponent(
+                              armada.whatsappMessage
+                            )}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >

@@ -11,15 +11,6 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-import carAvanza from "/assets/car-avanza.svg";
-import carInnova from "/assets/car-innova.svg";
-import carBrio from "/assets/car-brio.svg";
-import carFortuner from "/assets/car-fortuner.svg";
-import carXpander from "/assets/car-xpander.svg";
-import carHiace from "/assets/car-hiace.svg";
-import carAlphard from "/assets/car-alphard.svg";
-import carPajero from "/assets/car-pajero.svg";
-
 const WHATSAPP_NUMBER = "6281234567890";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20sewa%20mobil%20lepas%20kunci%20di%20Surabaya`;
 
@@ -31,7 +22,16 @@ const carCategories = [
     cars: [
       {
         name: "Honda Brio",
-        image: carBrio,
+        image: "/assets/armada-lepas-kunci/Brio.webp",
+        capacity: "4 penumpang",
+        transmission: "Manual / Matic",
+        fuel: "Bensin",
+        features: ["AC", "Audio", "Power Window"],
+        bestFor: "Solo traveler, couple, mobilitas harian",
+      },
+      {
+        name: "Toyota Agya",
+        image: "/assets/armada-lepas-kunci/AGYA.webp",
         capacity: "4 penumpang",
         transmission: "Manual / Matic",
         fuel: "Bensin",
@@ -47,7 +47,7 @@ const carCategories = [
     cars: [
       {
         name: "Toyota Avanza",
-        image: carAvanza,
+        image: "/assets/armada-lepas-kunci/AVANZA.webp",
         capacity: "6-7 penumpang",
         transmission: "Manual / Matic",
         fuel: "Bensin",
@@ -55,8 +55,17 @@ const carCategories = [
         bestFor: "Keluarga kecil, perjalanan dalam kota",
       },
       {
+        name: "Toyota All New Avanza",
+        image: "/assets/armada-lepas-kunci/ALL-NEW-AVANZA.webp",
+        capacity: "6-7 penumpang",
+        transmission: "Manual / Matic",
+        fuel: "Bensin",
+        features: ["AC Double Blower", "Audio Touchscreen", "Power Window"],
+        bestFor: "Keluarga modern, fitur terkini",
+      },
+      {
         name: "Mitsubishi Xpander",
-        image: carXpander,
+        image: "/assets/armada-lepas-kunci/XPANDER.webp",
         capacity: "7 penumpang",
         transmission: "Matic",
         fuel: "Bensin",
@@ -71,12 +80,35 @@ const carCategories = [
     cars: [
       {
         name: "Toyota Innova Reborn",
-        image: carInnova,
+        image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
         capacity: "6-7 penumpang",
         transmission: "Matic",
         fuel: "Bensin / Diesel",
         features: ["AC Auto", "Captain Seat (opsional)", "Audio Premium"],
         bestFor: "Bisnis, keluarga, kenyamanan maksimal",
+      },
+      {
+        name: "Toyota Innova Zenix",
+        image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
+        capacity: "6-7 penumpang",
+        transmission: "Matic",
+        fuel: "Hybrid / Bensin",
+        features: [
+          "AC Auto",
+          "Captain Seat",
+          "Premium Audio",
+          "Safety Features",
+        ],
+        bestFor: "Bisnis modern, keluarga premium, teknologi terkini",
+      },
+      {
+        name: "Suzuki XL7",
+        image: "/assets/armada-lepas-kunci/SUZUKI-XL7.webp",
+        capacity: "7 penumpang",
+        transmission: "Matic",
+        fuel: "Bensin",
+        features: ["AC Double Blower", "Audio Touchscreen", "Cruise Control"],
+        bestFor: "Keluarga modern, perjalanan jauh",
       },
     ],
   },
@@ -86,13 +118,31 @@ const carCategories = [
       "Tangguh untuk berbagai medan, cocok untuk perjalanan luar kota.",
     cars: [
       {
+        name: "Toyota Rush",
+        image: "/assets/armada-lepas-kunci/RUSH.webp",
+        capacity: "5-7 penumpang",
+        transmission: "Manual / Matic",
+        fuel: "Bensin",
+        features: ["AC", "Audio", "Ground Clearance Tinggi"],
+        bestFor: "Perjalanan luar kota, urban adventure",
+      },
+      {
         name: "Toyota Fortuner",
-        image: carFortuner,
+        image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
         capacity: "6-7 penumpang",
         transmission: "Matic",
         fuel: "Diesel",
         features: ["4WD (opsional)", "AC Auto", "Leather Seat"],
         bestFor: "Luar kota, medan berat, tampil prestisius",
+      },
+      {
+        name: "Daihatsu Terios",
+        image: "/assets/armada-lepas-kunci/TERIOS.webp",
+        capacity: "5-7 penumpang",
+        transmission: "Manual / Matic",
+        fuel: "Bensin",
+        features: ["AC", "Audio", "Ground Clearance Tinggi"],
+        bestFor: "Perjalanan luar kota, terreno ringan",
       },
     ],
   },
@@ -103,7 +153,7 @@ const carCategories = [
     cars: [
       {
         name: "Toyota Alphard",
-        image: carAlphard,
+        image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
         capacity: "7 penumpang",
         transmission: "Matic",
         fuel: "Hybrid / Bensin",
@@ -118,7 +168,7 @@ const carCategories = [
     cars: [
       {
         name: "Mitsubishi Pajero",
-        image: carPajero,
+        image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
         capacity: "7 penumpang",
         transmission: "Matic",
         fuel: "Diesel",
@@ -132,13 +182,51 @@ const carCategories = [
     description: "Kapasitas besar untuk rombongan atau keluarga besar.",
     cars: [
       {
-        name: "Toyota Hiace",
-        image: carHiace,
+        name: "Toyota Hiace Premio",
+        image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
         capacity: "12-16 penumpang",
         transmission: "Manual",
         fuel: "Diesel",
-        features: ["AC Ducting", "Bagasi Luas", "Kursi Nyaman"],
+        features: [
+          "AC Ducting",
+          "Bagasi Luas",
+          "Kursi Nyaman",
+          "Premium Interior",
+        ],
+        bestFor: "Rombongan premium, study tour executive",
+      },
+      {
+        name: "Toyota Hiace Commuter",
+        image: "/assets/armada-lepas-kunci/HIACE-COMMUTER.webp",
+        capacity: "12-16 penumpang",
+        transmission: "Manual",
+        fuel: "Diesel",
+        features: ["AC Ducting", "Bagasi Luas", "Kursi Standard"],
         bestFor: "Rombongan, study tour, gathering",
+      },
+      {
+        name: "Isuzu Elf Minibus",
+        image: "/assets/armada-lepas-kunci/ISUZU-ELF-MINIBUS.webp",
+        capacity: "12-15 penumpang",
+        transmission: "Manual",
+        fuel: "Diesel",
+        features: ["AC Ducting", "Bagasi Cukup", "Kursi Standard"],
+        bestFor: "Rombongan budget, perjalanan ekonomi",
+      },
+    ],
+  },
+  {
+    category: "Pickup",
+    description: "Khusus untuk kebutuhan logistik atau petualangan off-road.",
+    cars: [
+      {
+        name: "Toyota Hilux Double Cabin",
+        image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
+        capacity: "4-5 penumpang",
+        transmission: "Manual",
+        fuel: "Diesel",
+        features: ["4WD", "Pickup Bed", "AC", "Power Steering"],
+        bestFor: "Logistik, off-road, petualangan berat",
       },
     ],
   },
@@ -197,7 +285,7 @@ export default function ArmadaPage() {
       </section>
 
       {/* Car Categories */}
-      <section className="py-16 md:py-24">
+      <section className="overflow-x-hidden py-16 md:py-24">
         <div className="container space-y-16">
           {carCategories.map((category, catIndex) => (
             <div
@@ -217,11 +305,12 @@ export default function ArmadaPage() {
                     className="overflow-hidden rounded-2xl border border-border bg-card shadow-card"
                   >
                     <div className="grid md:grid-cols-2">
-                      <div className="aspect-[4/3] bg-muted md:aspect-auto">
+                      <div className="relative w-full aspect-square">
                         <img
                           src={car.image}
                           alt={car.name}
-                          className="h-full w-full object-cover"
+                          className="w-full h-full object-contain"
+                          loading="lazy"
                         />
                       </div>
                       <div className="p-6">
