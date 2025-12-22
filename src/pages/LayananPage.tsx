@@ -11,9 +11,13 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const driverImage = "/assets/service-driver.svg";
-const airportImage = "/assets/airport-juanda.svg";
-const familyImage = "/assets/family-travel.svg";
+const images = {
+  harian: "/layanan/SEWA-MOBIL-HARIAN.webp",
+  sopir: "/layanan/SEWA-MOBIL-DENGAN-SUPIR.webp",
+  bandara: "/layanan/antar-jemput-bandara-juanda.webp",
+  corporate: "/layanan/transport-corporate-proyek.webp",
+  keluarga: "/layanan/perjalanan-keluarga-event.webp",
+};
 
 const WHATSAPP_NUMBER = "85373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;
@@ -24,7 +28,7 @@ const services = [
     icon: Car,
     title: "Sewa Mobil Harian Surabaya",
     subtitle: "Fleksibel Sesuai Kebutuhan",
-    image: driverImage,
+    image: images.harian,
     problem:
       "Butuh kendaraan untuk aktivitas harian tapi tidak ingin repot dengan kepemilikan mobil? Atau sedang di Surabaya tanpa kendaraan pribadi?",
     solution:
@@ -45,7 +49,7 @@ const services = [
     icon: Users,
     title: "Sewa Mobil dengan Sopir",
     subtitle: "Anda Santai, Kami yang Menyetir",
-    image: driverImage,
+    image: images.sopir,
     problem:
       "Tidak familiar dengan jalanan Surabaya? Atau ingin fokus pada pekerjaan/istirahat selama perjalanan?",
     solution:
@@ -66,7 +70,7 @@ const services = [
     icon: Plane,
     title: "Antar Jemput Bandara Juanda",
     subtitle: "Tepat Waktu, Tanpa Ribet",
-    image: airportImage,
+    image: images.bandara,
     problem:
       "Khawatir telat ke bandara atau bingung transportasi setelah landing di Surabaya?",
     solution:
@@ -87,7 +91,7 @@ const services = [
     icon: Briefcase,
     title: "Transport Corporate & Proyek",
     subtitle: "Partner Mobilitas Bisnis Anda",
-    image: driverImage,
+    image: images.corporate,
     problem:
       "Perusahaan Anda punya proyek di Surabaya/Jawa Timur? Tim butuh transportasi rutin yang bisa diandalkan?",
     solution:
@@ -108,7 +112,7 @@ const services = [
     icon: Heart,
     title: "Perjalanan Keluarga & Event",
     subtitle: "Liburan Tanpa Stres",
-    image: familyImage,
+    image: images.keluarga,
     problem:
       "Mau liburan keluarga tapi stress mikirin transportasi? Takut mobil tidak cukup nyaman untuk anak-anak atau orang tua?",
     solution:

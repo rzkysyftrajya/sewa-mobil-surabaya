@@ -14,6 +14,12 @@ import {
 const WHATSAPP_NUMBER = "85373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20sewa%20mobil%20lepas%20kunci%20di%20Surabaya`;
 
+// Helper function to generate WhatsApp link for specific car
+const generateCarWhatsAppLink = (carName: string, category: string) => {
+  const message = `Halo, saya ingin pesan ${carName} kategori ${category}. Bisa cek ketersediaan dan harga?`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
+
 const carCategories = [
   {
     category: "City Car",
@@ -349,7 +355,7 @@ export default function ArmadaPage() {
                           </div>
                         </div>
 
-                        <div className="rounded-lg bg-accent p-3">
+                        <div className="rounded-lg bg-accent p-3 mb-4">
                           <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                             Cocok untuk
                           </div>
@@ -357,6 +363,25 @@ export default function ArmadaPage() {
                             {car.bestFor}
                           </p>
                         </div>
+
+                        <Button
+                          variant="whatsapp"
+                          size="sm"
+                          className="w-full"
+                          asChild
+                        >
+                          <a
+                            href={generateCarWhatsAppLink(
+                              car.name,
+                              category.category
+                            )}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Phone className="h-4 w-4 mr-2" />
+                            Pesan Armada Ini
+                          </a>
+                        </Button>
                       </div>
                     </div>
                   </div>

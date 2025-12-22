@@ -90,54 +90,63 @@ const armadaCars = [
     name: "Toyota Alphard",
     description:
       "MPV mewah dengan kapasitas 7-8 kursi leather, fitur entertainment lengkap dan AC terpisah untuk setiap baris.",
+    capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
   },
   {
     name: "Toyota Hiace Premio",
     description:
       "Van premium dengan kapasitas 10-12 kursi, interior lux, AC double blower dan sound system premium.",
+    capacity: "10-12 penumpang",
     image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
   },
   {
     name: "Toyota Hiace Commuter",
     description:
       "Van ekonomis dengan kapasitas 12-15 kursi, AC central, kursi fabric nyaman untuk perjalanan jauh.",
+    capacity: "12-15 penumpang",
     image: "/assets/armada-lepas-kunci/HIACE-COMMUTER.webp",
   },
   {
     name: "Toyota Innova Zenix",
     description:
       "MPV hybrid dengan kapasitas 7-8 kursi, sistem hybrid yang hemat BBM, fitur keselamatan Toyota Safety Sense.",
+    capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
   },
   {
     name: "Mitsubishi Pajero",
     description:
       "SUV 7 kursi dengan mesin diesel turbo, sistem 4WD untuk off-road, interior leather dan fitur mewah.",
+    capacity: "7 penumpang",
     image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
   },
   {
     name: "Toyota Fortuner",
     description:
       "SUV premium kapasitas 7-8 kursi, mesin bensin 2.7L, ground clearance tinggi, fitur entertainment touchscreen.",
+    capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
   },
   {
     name: "Toyota Hilux Double Cabin",
     description:
       "Pickup double cabin kapasitas 5 kursi, mesin diesel 2.8L, bak luas, 4WD untuk medan berat.",
+    capacity: "4-5 penumpang",
     image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
   },
   {
     name: "Toyota Innova Reborn",
     description:
       "MPV kapasitas 7-8 kursi, mesin diesel 2.5L, AC double blower, kursi fabric berkualitas tinggi.",
+    capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
   },
   {
     name: "Toyota Avanza",
     description:
       "Mobil keluarga kapasitas 7 kursi, mesin bensin 1.5L, AC standar, konsumsi BBM ekonomis.",
+    capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/AVANZA.webp",
   },
 ];
@@ -419,48 +428,56 @@ const HomePage = () => {
     <main>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+        {/* Full Screen Hero Image - No Cropping */}
+        <div className="relative w-full h-[70vh] sm:h-[60vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] bg-gray-100">
+          <img
+            src="/hero-section.webp"
+            alt="Sewa Mobil Surabaya"
+            className="w-full h-full object-contain"
+          />
         </div>
 
-        <div className="container relative z-10 py-20 md:py-28 lg:py-36">
-          <div className="max-w-2xl space-y-6 opacity-0 animate-fade-up">
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground">
-              <Award className="h-4 w-4" />
-              GROUP PT.VICKY RENTAL NUSANTARAA
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground">
-              <MapPin className="h-4 w-4" />
-              Melayani Surabaya & Sekitanya
-            </div>
+        {/* Hero Content Below Image */}
+        <div className="bg-background py-16 md:py-24">
+          <div className="container">
+            <div className="max-w-4xl mx-auto text-center space-y-6 opacity-0 animate-fade-up">
+              <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground">
+                <Award className="h-4 w-4" />
+                GROUP PT.VICKY RENTAL NUSANTARAA
+              </div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground">
+                <MapPin className="h-4 w-4" />
+                Melayani Surabaya & Sekitanya
+              </div>
 
-            <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
-              Butuh Transportasi di Surabaya?{" "}
-              <span className="text-primary">Kami Solusinya.</span>
-            </h1>
+              <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+                Butuh Transportasi di Surabaya?{" "}
+                <span className="text-primary">Kami Solusinya.</span>
+              </h1>
 
-            <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Tidak perlu pusing cari kendaraan. Dari antar jemput bandara
-              hingga perjalanan bisnis—kami siap kapan pun Anda butuhkan.
-            </p>
+              <p className="text-lg leading-relaxed text-muted-foreground md:text-xl max-w-3xl mx-auto">
+                Tidak perlu pusing cari kendaraan. Dari antar jemput bandara
+                hingga perjalanan bisnis—kami siap kapan pun Anda butuhkan.
+              </p>
 
-            <div className="flex flex-col gap-4 pt-4 sm:flex-row">
-              <Button variant="cta" size="xl" asChild>
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Phone className="h-5 w-5" />
-                  Konsultasi Gratis via WhatsApp
-                </a>
-              </Button>
-              <Button variant="outline" size="xl" asChild>
-                <Link to="/layanan">
-                  Lihat Layanan Kami
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </Button>
+              <div className="flex flex-col gap-4 pt-4 sm:flex-row justify-center">
+                <Button variant="cta" size="xl" asChild>
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Phone className="h-5 w-5" />
+                    Konsultasi
+                  </a>
+                </Button>
+                <Button variant="outline" size="xl" asChild>
+                  <Link to="/layanan">
+                    Lihat Layanan Kami
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -526,29 +543,54 @@ const HomePage = () => {
           </div>
 
           <div className="grid gap-2 sm:grid-cols-4 lg:grid-cols-5">
-            {armadaCars.map((car, index) => (
-              <div
-                key={car.name}
-                className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated opacity-0 animate-fade-up"
-                style={{ animationDelay: `${(index + 1) * 100}ms` }}
-              >
-                <div className="aspect-square overflow-hidden bg-muted">
-                  <img
-                    src={car.image}
-                    alt={car.name}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+            {armadaCars.map((car, index) => {
+              const whatsappMessage = `Halo, saya tertarik dengan ${car.name} kapasitas ${car.capacity}. Bisa info lebih detail?`;
+              const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                whatsappMessage
+              )}`;
+
+              return (
+                <div
+                  key={car.name}
+                  className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated opacity-0 animate-fade-up"
+                  style={{ animationDelay: `${(index + 1) * 100}ms` }}
+                >
+                  <div className="aspect-square overflow-hidden bg-muted">
+                    <img
+                      src={car.image}
+                      alt={car.name}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-1.5">
+                    <h3 className="mb-0.5 text-xs font-semibold text-foreground">
+                      {car.name}
+                    </h3>
+                    <p className="mb-2 text-xs text-muted-foreground line-clamp-2">
+                      {car.description}
+                    </p>
+                    <div className="text-xs text-primary font-medium mb-2">
+                      {car.capacity}
+                    </div>
+                    <Button
+                      variant="whatsapp"
+                      size="sm"
+                      className="w-full text-xs h-7"
+                      asChild
+                    >
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MessageCircle className="h-3 w-3 mr-1" />
+                        Pesan
+                      </a>
+                    </Button>
+                  </div>
                 </div>
-                <div className="p-1.5">
-                  <h3 className="mb-0.5 text-xs font-semibold text-foreground">
-                    {car.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground line-clamp-2">
-                    {car.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-6 text-center opacity-0 animate-fade-up delay-300">
