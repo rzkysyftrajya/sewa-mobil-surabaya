@@ -945,6 +945,57 @@
   transform: scale(1.02);
 }
 
+/* Focused Section Effect for Navigation */
+.focused-section {
+  animation: sectionFocus 2s ease-out;
+  position: relative;
+}
+
+.focused-section::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border: 2px solid hsl(24 76% 44%);
+  border-radius: 12px;
+  opacity: 0;
+  animation: focusBorder 2s ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes sectionFocus {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(24, 76% 44%, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+@keyframes focusBorder {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
 /* Particle Effects */
 .particle {
   position: absolute;

@@ -45,7 +45,7 @@ import {
 const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya`;
 
-// Services data
+// Services data with enhanced navigation
 const services = [
   {
     icon: Car,
@@ -53,6 +53,7 @@ const services = [
     description:
       "Fleksibel untuk kebutuhan harian Anda di Surabaya. Lepas kunci atau dengan sopir.",
     href: "/layanan#harian",
+    serviceId: "harian",
   },
   {
     icon: Users,
@@ -60,6 +61,7 @@ const services = [
     description:
       "Sopir lokal yang hafal jalanan Surabaya. Anda santai, kami yang menyetir.",
     href: "/layanan#sopir",
+    serviceId: "sopir",
   },
   {
     icon: MapPin,
@@ -67,6 +69,7 @@ const services = [
     description:
       "Tepat waktu, tanpa ribet. Kami pantau jadwal penerbangan Anda.",
     href: "/layanan#bandara",
+    serviceId: "bandara",
   },
   {
     icon: Briefcase,
@@ -74,6 +77,7 @@ const services = [
     description:
       "Solusi mobilitas untuk tim dan proyek bisnis Anda di Jawa Timur.",
     href: "/layanan#corporate",
+    serviceId: "corporate",
   },
   {
     icon: Heart,
@@ -81,6 +85,7 @@ const services = [
     description:
       "Liburan keluarga tanpa stres. Armada nyaman untuk segala usia.",
     href: "/layanan#keluarga",
+    serviceId: "keluarga",
   },
 ];
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Car,
@@ -131,6 +132,50 @@ const services = [
 ];
 
 export default function LayananPage() {
+  // Handle smooth scroll to hash on page load
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Small delay to ensure page is fully loaded
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            const navbarHeight = 80; // Approximate navbar height
+            const elementPosition =
+              element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navbarHeight;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+
+            // Add focus effect to the section
+            element.classList.add("focused-section");
+            setTimeout(() => {
+              element.classList.remove("focused-section");
+            }, 2000);
+          }
+        }, 100);
+      }
+    };
+
+    // Scroll on initial load
+    handleHashScroll();
+
+    // Listen for hash changes
+    const handleHashChange = () => {
+      handleHashScroll();
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   return (
     <main>
       {/* Hero */}
