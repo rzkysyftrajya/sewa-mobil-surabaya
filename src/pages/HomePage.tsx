@@ -84,52 +84,77 @@ const services = [
   },
 ];
 
-// Armada data - Simplified cards
+// Armada data - Simplified cards with descriptions
 const armadaCars = [
   {
     name: "Toyota Alphard",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
+    description:
+      "MPV Luxury premium dengan captain seat dan fitur kenyamanan kelas tinggi",
+    slug: "toyota-alphard",
   },
   {
     name: "Toyota Hiace Premio",
     capacity: "10-12 penumpang",
     image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
+    description:
+      "Minibus premium 12-16 penumpang dengan AC ducting dan interior mewah",
+    slug: "toyota-hiace-premio",
   },
   {
     name: "Toyota Hiace Commuter",
     capacity: "12-15 penumpang",
     image: "/assets/armada-lepas-kunci/HIACE-COMMUTER.webp",
+    description:
+      "Minibus ekonomis 12-16 penumpang, cocok untuk rombongan dengan budget terjangkau",
+    slug: "toyota-hiace-commuter",
   },
   {
     name: "Toyota Innova Zenix",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
+    description:
+      "MPV hybrid modern dengan teknologi terdepan dan fitur keselamatan lengkap",
+    slug: "toyota-innova-zenix",
   },
   {
     name: "Mitsubishi Pajero",
     capacity: "7 penumpang",
     image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
+    description:
+      "SUV premium 4WD tangguh untuk off-road dan tampilan prestisius",
+    slug: "mitsubishi-pajero",
   },
   {
     name: "Toyota Fortuner",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
+    description:
+      "SUV diesel 4WD kokoh untuk perjalanan luar kota dan medan berat",
+    slug: "toyota-fortuner",
   },
   {
     name: "Toyota Hilux Double Cabin",
     capacity: "4-5 penumpang",
     image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
+    description: "Pickup 4WD untuk kebutuhan logistik dan petualangan off-road",
+    slug: "toyota-hilux-double-cabin",
   },
   {
     name: "Toyota Innova Reborn",
     capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
+    description: "MPV keluarga nyaman dengan fitur lengkap dan performa handal",
+    slug: "toyota-innova-reborn",
   },
   {
     name: "Toyota Avanza",
     capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/AVANZA.webp",
+    description:
+      "MPV ekonomis 6-7 penumpang, pilihan populer untuk keluarga budget terbatas",
+    slug: "toyota-avanza",
   },
 ];
 
@@ -730,24 +755,37 @@ const HomePage = () => {
                     <h3 className="mb-1 text-sm font-semibold text-foreground">
                       {car.name}
                     </h3>
-                    <div className="text-xs text-primary font-medium mb-3">
+                    <div className="text-xs text-primary font-medium mb-2">
                       {car.capacity}
                     </div>
-                    <Button
-                      variant="whatsapp"
-                      size="sm"
-                      className="w-full text-xs h-8"
-                      asChild
-                    >
-                      <a
-                        href={whatsappLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+                      {car.description}
+                    </p>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 text-xs h-8"
+                        asChild
                       >
-                        <MessageCircle className="h-3 w-3 mr-1" />
-                        Pesan
-                      </a>
-                    </Button>
+                        <Link to={`/armada#${car.slug}`}>Detail</Link>
+                      </Button>
+                      <Button
+                        variant="whatsapp"
+                        size="sm"
+                        className="flex-1 text-xs h-8"
+                        asChild
+                      >
+                        <a
+                          href={whatsappLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="h-3 w-3 mr-1" />
+                          Pesan
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               );
@@ -790,24 +828,37 @@ const HomePage = () => {
                           <h3 className="mb-1 text-sm font-semibold text-foreground">
                             {car.name}
                           </h3>
-                          <div className="text-xs text-primary font-medium mb-3">
+                          <div className="text-xs text-primary font-medium mb-2">
                             {car.capacity}
                           </div>
-                          <Button
-                            variant="whatsapp"
-                            size="sm"
-                            className="w-full text-xs h-8"
-                            asChild
-                          >
-                            <a
-                              href={whatsappLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                          <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+                            {car.description}
+                          </p>
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 text-xs h-8"
+                              asChild
                             >
-                              <MessageCircle className="h-3 w-3 mr-1" />
-                              Pesan
-                            </a>
-                          </Button>
+                              <Link to={`/armada#${car.slug}`}>Detail</Link>
+                            </Button>
+                            <Button
+                              variant="whatsapp"
+                              size="sm"
+                              className="flex-1 text-xs h-8"
+                              asChild
+                            >
+                              <a
+                                href={whatsappLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <MessageCircle className="h-3 w-3 mr-1" />
+                                Pesan
+                              </a>
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </CarouselItem>

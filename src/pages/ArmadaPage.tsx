@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Phone,
   Users,
@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20sewa%20mobil%20lepas%20kunci%20di%20Surabaya`;
@@ -34,6 +35,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC", "Audio", "Power Window"],
         bestFor: "Solo traveler, couple, mobilitas harian",
+        slug: "honda-brio",
       },
       {
         name: "Toyota Agya",
@@ -43,6 +45,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC", "Audio", "Power Window"],
         bestFor: "Solo traveler, couple, mobilitas harian",
+        slug: "toyota-agya",
       },
     ],
   },
@@ -59,6 +62,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC Double Blower", "Audio", "Power Window"],
         bestFor: "Keluarga kecil, perjalanan dalam kota",
+        slug: "toyota-avanza",
       },
       {
         name: "Toyota All New Avanza",
@@ -68,6 +72,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC Double Blower", "Audio Touchscreen", "Power Window"],
         bestFor: "Keluarga modern, fitur terkini",
+        slug: "toyota-all-new-avanza",
       },
       {
         name: "Mitsubishi Xpander",
@@ -77,6 +82,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC Double Blower", "Audio Touchscreen", "Cruise Control"],
         bestFor: "Keluarga, perjalanan nyaman",
+        slug: "mitsubishi-xpander",
       },
     ],
   },
@@ -92,6 +98,7 @@ const carCategories = [
         fuel: "Bensin / Diesel",
         features: ["AC Auto", "Captain Seat (opsional)", "Audio Premium"],
         bestFor: "Bisnis, keluarga, kenyamanan maksimal",
+        slug: "toyota-innova-reborn",
       },
       {
         name: "Toyota Innova Zenix",
@@ -106,6 +113,7 @@ const carCategories = [
           "Safety Features",
         ],
         bestFor: "Bisnis modern, keluarga premium, teknologi terkini",
+        slug: "toyota-innova-zenix",
       },
       {
         name: "Suzuki XL7",
@@ -115,6 +123,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC Double Blower", "Audio Touchscreen", "Cruise Control"],
         bestFor: "Keluarga modern, perjalanan jauh",
+        slug: "suzuki-xl7",
       },
     ],
   },
@@ -131,6 +140,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC", "Audio", "Ground Clearance Tinggi"],
         bestFor: "Perjalanan luar kota, urban adventure",
+        slug: "toyota-rush",
       },
       {
         name: "Toyota Fortuner",
@@ -140,6 +150,7 @@ const carCategories = [
         fuel: "Diesel",
         features: ["4WD (opsional)", "AC Auto", "Leather Seat"],
         bestFor: "Luar kota, medan berat, tampil prestisius",
+        slug: "toyota-fortuner",
       },
       {
         name: "Daihatsu Terios",
@@ -149,6 +160,7 @@ const carCategories = [
         fuel: "Bensin",
         features: ["AC", "Audio", "Ground Clearance Tinggi"],
         bestFor: "Perjalanan luar kota, terreno ringan",
+        slug: "daihatsu-terios",
       },
     ],
   },
@@ -165,6 +177,7 @@ const carCategories = [
         fuel: "Hybrid / Bensin",
         features: ["Captain Seat", "Ottoman", "Premium Audio", "Dual AC"],
         bestFor: "Executivo, acara formal, keluarga mewah",
+        slug: "toyota-alphard",
       },
     ],
   },
@@ -180,6 +193,7 @@ const carCategories = [
         fuel: "Diesel",
         features: ["4WD", "Hill Start Assist", "Premium Interior", "Sunroof"],
         bestFor: "Off-road, pegunungan, tampil prestisius",
+        slug: "mitsubishi-pajero",
       },
     ],
   },
@@ -200,6 +214,7 @@ const carCategories = [
           "Premium Interior",
         ],
         bestFor: "Rombongan premium, study tour executive",
+        slug: "toyota-hiace-premio",
       },
       {
         name: "Toyota Hiace Commuter",
@@ -209,6 +224,7 @@ const carCategories = [
         fuel: "Diesel",
         features: ["AC Ducting", "Bagasi Luas", "Kursi Standard"],
         bestFor: "Rombongan, study tour, gathering",
+        slug: "toyota-hiace-commuter",
       },
       {
         name: "Isuzu Elf Minibus",
@@ -218,6 +234,7 @@ const carCategories = [
         fuel: "Diesel",
         features: ["AC Ducting", "Bagasi Cukup", "Kursi Standard"],
         bestFor: "Rombongan budget, perjalanan ekonomi",
+        slug: "isuzu-elf-minibus",
       },
     ],
   },
@@ -233,6 +250,7 @@ const carCategories = [
         fuel: "Diesel",
         features: ["4WD", "Pickup Bed", "AC", "Power Steering"],
         bestFor: "Logistik, off-road, petualangan berat",
+        slug: "toyota-hilux-double-cabin",
       },
     ],
   },
@@ -253,6 +271,33 @@ const notes = [
 ];
 
 export default function ArmadaPage() {
+  const location = useLocation();
+
+  // Handle scroll to anchor on page load
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest",
+          });
+          // Add highlight effect
+          element.classList.add("ring-2", "ring-primary", "ring-opacity-50");
+          setTimeout(() => {
+            element.classList.remove(
+              "ring-2",
+              "ring-primary",
+              "ring-opacity-50"
+            );
+          }, 3000);
+        }, 100);
+      }
+    }
+  }, [location.hash]);
+
   return (
     <main>
       {/* Hero */}
@@ -308,6 +353,7 @@ export default function ArmadaPage() {
                 {category.cars.map((car) => (
                   <div
                     key={car.name}
+                    id={car.slug}
                     className="overflow-hidden rounded-2xl border border-border bg-card shadow-card"
                   >
                     <div className="grid md:grid-cols-2">
