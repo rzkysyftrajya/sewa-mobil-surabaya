@@ -409,11 +409,19 @@ const useScrollAnimation = () => {
 const CustomVideoPlayer = ({
   src,
   title,
+  videoIndex,
+  isCurrentlyPlaying,
+  onPlay,
+  onPause,
   className = "",
   maxHeight = "400px",
 }: {
   src: string;
   title: string;
+  videoIndex: number;
+  isCurrentlyPlaying: boolean;
+  onPlay: (index: number) => void;
+  onPause: (index: number) => void;
   className?: string;
   maxHeight?: string;
 }) => {
@@ -422,14 +430,29 @@ const CustomVideoPlayer = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Sync with parent's playing state
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isCurrentlyPlaying && !isPlaying) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else if (!isCurrentlyPlaying && isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  }, [isCurrentlyPlaying, isPlaying]);
+
   const handlePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
         setIsPlaying(false);
+        onPause(videoIndex);
       } else {
         videoRef.current.play();
         setIsPlaying(true);
+        onPlay(videoIndex);
       }
     }
   };
@@ -543,6 +566,27 @@ const CustomVideoPlayer = ({
 };
 
 const HomePage = () => {
+  const [currentlyPlayingVideo, setCurrentlyPlayingVideo] = useState<
+    number | null
+  >(null);
+
+  const handleVideoPlay = (videoIndex: number) => {
+    // Pause currently playing video if any
+    if (
+      currentlyPlayingVideo !== null &&
+      currentlyPlayingVideo !== videoIndex
+    ) {
+      setCurrentlyPlayingVideo(null);
+    }
+    setCurrentlyPlayingVideo(videoIndex);
+  };
+
+  const handleVideoPause = (videoIndex: number) => {
+    if (currentlyPlayingVideo === videoIndex) {
+      setCurrentlyPlayingVideo(null);
+    }
+  };
+
   return (
     <main>
       {/* Hero Section */}
@@ -806,6 +850,10 @@ const HomePage = () => {
                 key={index}
                 src={video.src}
                 title={video.title}
+                videoIndex={index}
+                isCurrentlyPlaying={currentlyPlayingVideo === index}
+                onPlay={handleVideoPlay}
+                onPause={handleVideoPause}
                 maxHeight="400px"
               />
             ))}
@@ -830,6 +878,10 @@ const HomePage = () => {
                       <CustomVideoPlayer
                         src={video.src}
                         title={video.title}
+                        videoIndex={index}
+                        isCurrentlyPlaying={currentlyPlayingVideo === index}
+                        onPlay={handleVideoPlay}
+                        onPause={handleVideoPause}
                         maxHeight="300px"
                       />
                     </div>
