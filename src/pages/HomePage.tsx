@@ -42,7 +42,7 @@ import {
 } from "lucide-react";
 
 // WhatsApp link configuration
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya`;
 
 // Services data
@@ -84,68 +84,50 @@ const services = [
   },
 ];
 
-// Armada data
+// Armada data - Simplified cards
 const armadaCars = [
   {
     name: "Toyota Alphard",
-    description:
-      "MPV mewah dengan kapasitas 7-8 kursi leather, fitur entertainment lengkap dan AC terpisah untuk setiap baris.",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
   },
   {
     name: "Toyota Hiace Premio",
-    description:
-      "Van premium dengan kapasitas 10-12 kursi, interior lux, AC double blower dan sound system premium.",
     capacity: "10-12 penumpang",
     image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
   },
   {
     name: "Toyota Hiace Commuter",
-    description:
-      "Van ekonomis dengan kapasitas 12-15 kursi, AC central, kursi fabric nyaman untuk perjalanan jauh.",
     capacity: "12-15 penumpang",
     image: "/assets/armada-lepas-kunci/HIACE-COMMUTER.webp",
   },
   {
     name: "Toyota Innova Zenix",
-    description:
-      "MPV hybrid dengan kapasitas 7-8 kursi, sistem hybrid yang hemat BBM, fitur keselamatan Toyota Safety Sense.",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
   },
   {
     name: "Mitsubishi Pajero",
-    description:
-      "SUV 7 kursi dengan mesin diesel turbo, sistem 4WD untuk off-road, interior leather dan fitur mewah.",
     capacity: "7 penumpang",
     image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
   },
   {
     name: "Toyota Fortuner",
-    description:
-      "SUV premium kapasitas 7-8 kursi, mesin bensin 2.7L, ground clearance tinggi, fitur entertainment touchscreen.",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
   },
   {
     name: "Toyota Hilux Double Cabin",
-    description:
-      "Pickup double cabin kapasitas 5 kursi, mesin diesel 2.8L, bak luas, 4WD untuk medan berat.",
     capacity: "4-5 penumpang",
     image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
   },
   {
     name: "Toyota Innova Reborn",
-    description:
-      "MPV kapasitas 7-8 kursi, mesin diesel 2.5L, AC double blower, kursi fabric berkualitas tinggi.",
     capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
   },
   {
     name: "Toyota Avanza",
-    description:
-      "Mobil keluarga kapasitas 7 kursi, mesin bensin 1.5L, AC standar, konsumsi BBM ekonomis.",
     capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/AVANZA.webp",
   },
@@ -428,12 +410,12 @@ const HomePage = () => {
     <main>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Full Screen Hero Image - No Cropping */}
-        <div className="relative w-full h-[70vh] sm:h-[60vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] bg-gray-100">
+        {/* Hero Image - No Cropping, Object-Contain, Responsive */}
+        <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] xl:h-[70vh] bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center p-4 sm:p-6 md:p-8">
           <img
             src="/hero-section.webp"
             alt="Sewa Mobil Surabaya"
-            className="w-full h-full object-contain"
+            className="w-full h-full max-w-6xl object-contain rounded-lg shadow-lg"
           />
         </div>
 
@@ -542,7 +524,8 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="grid gap-2 sm:grid-cols-4 lg:grid-cols-5">
+          {/* Desktop Grid View */}
+          <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 opacity-0 animate-fade-up">
             {armadaCars.map((car, index) => {
               const whatsappMessage = `Halo, saya tertarik dengan ${car.name} kapasitas ${car.capacity}. Bisa info lebih detail?`;
               const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -552,30 +535,27 @@ const HomePage = () => {
               return (
                 <div
                   key={car.name}
-                  className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated opacity-0 animate-fade-up"
+                  className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated hover:-translate-y-1"
                   style={{ animationDelay: `${(index + 1) * 100}ms` }}
                 >
-                  <div className="aspect-square overflow-hidden bg-muted">
+                  <div className="aspect-square overflow-hidden bg-muted p-2">
                     <img
                       src={car.image}
                       alt={car.name}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="h-full w-full object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-1.5">
-                    <h3 className="mb-0.5 text-xs font-semibold text-foreground">
+                  <div className="p-3">
+                    <h3 className="mb-1 text-sm font-semibold text-foreground">
                       {car.name}
                     </h3>
-                    <p className="mb-2 text-xs text-muted-foreground line-clamp-2">
-                      {car.description}
-                    </p>
-                    <div className="text-xs text-primary font-medium mb-2">
+                    <div className="text-xs text-primary font-medium mb-3">
                       {car.capacity}
                     </div>
                     <Button
                       variant="whatsapp"
                       size="sm"
-                      className="w-full text-xs h-7"
+                      className="w-full text-xs h-8"
                       asChild
                     >
                       <a
@@ -591,6 +571,69 @@ const HomePage = () => {
                 </div>
               );
             })}
+          </div>
+
+          {/* Mobile Carousel View */}
+          <div className="md:hidden px-4 opacity-0 animate-fade-up">
+            <Carousel
+              className="w-full touch-pan-y"
+              opts={{
+                align: "start",
+                loop: true,
+                containScroll: "trimSnaps",
+                skipSnaps: false,
+              }}
+              plugins={[]}
+            >
+              <CarouselContent className="ml-0">
+                {armadaCars.map((car, index) => {
+                  const whatsappMessage = `Halo, saya tertarik dengan ${car.name} kapasitas ${car.capacity}. Bisa info lebih detail?`;
+                  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                    whatsappMessage
+                  )}`;
+
+                  return (
+                    <CarouselItem
+                      key={`${car.name}-${index}`}
+                      className="basis-2/3 pl-0"
+                    >
+                      <div className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated mx-2">
+                        <div className="aspect-square overflow-hidden bg-muted p-3">
+                          <img
+                            src={car.image}
+                            alt={car.name}
+                            className="h-full w-full object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="p-3">
+                          <h3 className="mb-1 text-sm font-semibold text-foreground">
+                            {car.name}
+                          </h3>
+                          <div className="text-xs text-primary font-medium mb-3">
+                            {car.capacity}
+                          </div>
+                          <Button
+                            variant="whatsapp"
+                            size="sm"
+                            className="w-full text-xs h-8"
+                            asChild
+                          >
+                            <a
+                              href={whatsappLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <MessageCircle className="h-3 w-3 mr-1" />
+                              Pesan
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+            </Carousel>
           </div>
 
           <div className="mt-6 text-center opacity-0 animate-fade-up delay-300">
@@ -624,15 +667,33 @@ const HomePage = () => {
             {videoFiles.map((video, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-2xl bg-black"
+                className="relative overflow-hidden rounded-2xl bg-black shadow-lg"
               >
                 <video
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto object-contain rounded-lg bg-black"
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="metadata"
+                  style={{ maxHeight: "400px" }}
+                  ref={(el) => {
+                    if (el) {
+                      const observer = new IntersectionObserver(
+                        (entries) => {
+                          entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                              el.play();
+                              // Optional: unmute when in viewport
+                              // el.muted = false;
+                            }
+                          });
+                        },
+                        { threshold: 0.5 }
+                      );
+                      observer.observe(el);
+                    }
+                  }}
                 >
                   <source src={video.src} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -656,14 +717,32 @@ const HomePage = () => {
               <CarouselContent className="ml-0">
                 {videoFiles.map((video, index) => (
                   <CarouselItem key={index} className="basis-4/5 pl-0">
-                    <div className="relative overflow-hidden rounded-2xl bg-black mx-2">
+                    <div className="relative overflow-hidden rounded-2xl bg-black shadow-lg mx-2">
                       <video
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-auto object-contain rounded-lg bg-black"
                         autoPlay
                         muted
                         loop
                         playsInline
                         preload="metadata"
+                        style={{ maxHeight: "300px" }}
+                        ref={(el) => {
+                          if (el) {
+                            const observer = new IntersectionObserver(
+                              (entries) => {
+                                entries.forEach((entry) => {
+                                  if (entry.isIntersecting) {
+                                    el.play();
+                                    // Optional: unmute when in viewport
+                                    // el.muted = false;
+                                  }
+                                });
+                              },
+                              { threshold: 0.5 }
+                            );
+                            observer.observe(el);
+                          }
+                        }}
                       >
                         <source src={video.src} type="video/mp4" />
                         Your browser does not support the video tag.
@@ -695,14 +774,14 @@ const HomePage = () => {
             {documentationImages.map((doc, index) => (
               <div
                 key={index}
-                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated"
+                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated p-3"
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
-                <div className="aspect-square overflow-hidden bg-muted">
+                <div className="aspect-square overflow-hidden bg-muted rounded-lg">
                   <img
                     src={doc.src}
                     alt={doc.alt}
-                    className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               </div>
@@ -724,12 +803,12 @@ const HomePage = () => {
               <CarouselContent className="ml-0">
                 {documentationImages.map((doc, index) => (
                   <CarouselItem key={index} className="basis-3/4 pl-0">
-                    <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated mx-2">
-                      <div className="aspect-square overflow-hidden bg-muted">
+                    <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated mx-2 p-3">
+                      <div className="aspect-square overflow-hidden bg-muted rounded-lg">
                         <img
                           src={doc.src}
                           alt={doc.alt}
-                          className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                          className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                         />
                       </div>
                     </div>
@@ -1034,7 +1113,7 @@ const HomePage = () => {
               <Button variant="outline" size="lg" asChild>
                 <a href={`tel:+${WHATSAPP_NUMBER}`}>
                   <Phone className="h-4 w-4" />
-                  0812-3456-7890
+                  +62 853-7329-3935
                 </a>
               </Button>
             </div>

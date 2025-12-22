@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 
 const footerLinks = {
   layanan: [
@@ -34,19 +34,11 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4 lg:col-span-2">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <span className="text-xl font-bold text-primary-foreground">
-                  S
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold leading-tight text-foreground">
-                  SEWA MOBIL
-                </span>
-                <span className="text-sm font-medium text-primary">
-                  SURABAYA
-                </span>
-              </div>
+              <img
+                src="/logo.png"
+                alt="Sewa Mobil Surabaya"
+                className="h-16 w-auto"
+              />
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
               Solusi transportasi terpercaya di Surabaya. Melayani kebutuhan
@@ -99,7 +91,7 @@ export function Footer() {
                     href={`tel:+${WHATSAPP_NUMBER}`}
                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
-                    0853 7329 3935
+                    +62 853-7329-3935
                   </a>
                 </div>
               </li>

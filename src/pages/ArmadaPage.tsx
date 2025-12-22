@@ -11,7 +11,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20sewa%20mobil%20lepas%20kunci%20di%20Surabaya`;
 
 // Helper function to generate WhatsApp link for specific car

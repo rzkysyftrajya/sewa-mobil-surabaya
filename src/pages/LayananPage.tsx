@@ -19,7 +19,7 @@ const images = {
   keluarga: "/layanan/perjalanan-keluarga-event.webp",
 };
 
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;
 
 const services = [
@@ -165,7 +165,7 @@ export default function LayananPage() {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="aspect-video w-full rounded-2xl object-cover shadow-card"
+                  className="aspect-square w-full rounded-2xl object-contain shadow-card bg-gray-100"
                 />
               </div>
 

@@ -14,7 +14,7 @@ const navLinks = [
   { href: "/kontak", label: "Kontak" },
 ];
 
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;
 
 export function Navbar() {
@@ -57,7 +57,7 @@ export function Navbar() {
             className="flex items-center gap-2 text-sm font-medium text-foreground"
           >
             <Phone className="h-4 w-4 text-primary" />
-            <span>0853 7329 3935</span>
+            <span>+62 853-7329-3935</span>
           </a>
           <Button variant="cta" size="default" asChild>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">

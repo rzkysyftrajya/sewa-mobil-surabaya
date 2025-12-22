@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;
 
 const contactMethods = [
@@ -10,7 +10,7 @@ const contactMethods = [
     title: "WhatsApp",
     description:
       "Cara tercepat untuk menghubungi kami. Biasanya dibalas dalam 5 menit.",
-    value: "0853 7329 3935",
+    value: "+62 853-7329-3935",
     action: WHATSAPP_LINK,
     actionLabel: "Chat Sekarang",
     primary: true,
@@ -19,7 +19,7 @@ const contactMethods = [
     icon: Phone,
     title: "Telepon",
     description: "Untuk pemesanan mendadak atau percakapan langsung.",
-    value: "0853 7329 3935",
+    value: "+62 853-7329-3935",
     action: `tel:+${WHATSAPP_NUMBER}`,
     actionLabel: "Telepon",
     primary: false,
@@ -28,7 +28,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email",
     description: "Untuk pertanyaan detail, proposal corporate, atau dokumen.",
-    value: "info@sewamobilsurabaya.com",
+    value: "sewamobilsurabaya96@gmail.com",
     action: "mailto:info@sewamobilsurabaya.com",
     actionLabel: "Kirim Email",
     primary: false,
