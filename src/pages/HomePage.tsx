@@ -405,6 +405,143 @@ const useScrollAnimation = () => {
   return { isVisible, elementRef };
 };
 
+// Custom Video Player Component
+const CustomVideoPlayer = ({
+  src,
+  title,
+  className = "",
+  maxHeight = "400px",
+}: {
+  src: string;
+  title: string;
+  className?: string;
+  maxHeight?: string;
+}) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const handleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleLoadedData = () => {
+    setIsLoaded(true);
+  };
+
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl bg-black shadow-lg ${className}`}
+    >
+      <video
+        ref={videoRef}
+        className="w-full h-auto object-contain rounded-lg bg-black"
+        loop
+        playsInline
+        preload="metadata"
+        style={{ maxHeight }}
+        onLoadedData={handleLoadedData}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      >
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Video Controls Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div className="flex items-center gap-4">
+          {/* Play/Pause Button */}
+          <button
+            onClick={handlePlay}
+            className="flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200 group"
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+          >
+            {isPlaying ? (
+              <Pause className="h-8 w-8 text-white group-hover:scale-110 transition-transform" />
+            ) : (
+              <Play className="h-8 w-8 text-white group-hover:scale-110 transition-transform ml-1" />
+            )}
+          </button>
+
+          {/* Mute/Unmute Button */}
+          <button
+            onClick={handleMute}
+            className="flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200 group"
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+          >
+            {isMuted ? (
+              <svg
+                className="h-6 w-6 text-white group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="h-6 w-6 text-white group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Video Title */}
+      <div className="absolute bottom-4 left-4 right-4">
+        <h3 className="text-white text-sm font-medium bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1">
+          {title}
+        </h3>
+      </div>
+
+      {/* Loading indicator */}
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const HomePage = () => {
   return (
     <main>
@@ -665,40 +802,12 @@ const HomePage = () => {
           {/* Desktop Grid View */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 opacity-0 animate-fade-up">
             {videoFiles.map((video, index) => (
-              <div
+              <CustomVideoPlayer
                 key={index}
-                className="relative overflow-hidden rounded-2xl bg-black shadow-lg"
-              >
-                <video
-                  className="w-full h-auto object-contain rounded-lg bg-black"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  style={{ maxHeight: "400px" }}
-                  ref={(el) => {
-                    if (el) {
-                      const observer = new IntersectionObserver(
-                        (entries) => {
-                          entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                              el.play();
-                              // Optional: unmute when in viewport
-                              // el.muted = false;
-                            }
-                          });
-                        },
-                        { threshold: 0.5 }
-                      );
-                      observer.observe(el);
-                    }
-                  }}
-                >
-                  <source src={video.src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+                src={video.src}
+                title={video.title}
+                maxHeight="400px"
+              />
             ))}
           </div>
 
@@ -717,36 +826,12 @@ const HomePage = () => {
               <CarouselContent className="ml-0">
                 {videoFiles.map((video, index) => (
                   <CarouselItem key={index} className="basis-4/5 pl-0">
-                    <div className="relative overflow-hidden rounded-2xl bg-black shadow-lg mx-2">
-                      <video
-                        className="w-full h-auto object-contain rounded-lg bg-black"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        style={{ maxHeight: "300px" }}
-                        ref={(el) => {
-                          if (el) {
-                            const observer = new IntersectionObserver(
-                              (entries) => {
-                                entries.forEach((entry) => {
-                                  if (entry.isIntersecting) {
-                                    el.play();
-                                    // Optional: unmute when in viewport
-                                    // el.muted = false;
-                                  }
-                                });
-                              },
-                              { threshold: 0.5 }
-                            );
-                            observer.observe(el);
-                          }
-                        }}
-                      >
-                        <source src={video.src} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div className="mx-2">
+                      <CustomVideoPlayer
+                        src={video.src}
+                        title={video.title}
+                        maxHeight="300px"
+                      />
                     </div>
                   </CarouselItem>
                 ))}

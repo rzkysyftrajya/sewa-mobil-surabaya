@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Award, MapPin, Phone, ArrowRight } from "lucide-react";
 
 // WhatsApp link configuration
-const WHATSAPP_NUMBER = "85373293935";
+const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya`;
 
 // Optimized Hero Section - No Cropping, Responsive
