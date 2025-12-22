@@ -8,6 +8,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   ArrowRight,
   Car,
   Star,
@@ -35,7 +42,7 @@ import {
 } from "lucide-react";
 
 // WhatsApp link configuration
-const WHATSAPP_NUMBER = "6281234567890";
+const WHATSAPP_NUMBER = "85373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya`;
 
 // Services data
@@ -135,33 +142,20 @@ const armadaCars = [
   },
 ];
 
-// Dokumentasi pelayanan data
-const serviceDocumentation = [
-  {
-    image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
-    caption: "Pelayanan Premium – Pukul 08:00",
-  },
-  {
-    image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
-    caption: "Perjalanan Bisnis – Pukul 14:15",
-  },
-  {
-    image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
-    caption: "Liburan Keluarga – Pukul 06:00",
-  },
-  {
-    image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
-    caption: "Proyek Konstruksi – Pukul 07:20",
-  },
-  {
-    image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
-    caption: "Touring Surabaya – Pukul 11:45",
-  },
-  {
-    image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
-    caption: "Event Corporate – Pukul 16:30",
-  },
+// Video files data
+const videoFiles = [
+  { src: "/armada-video/armada-1.mp4", title: "Armada Video 1" },
+  { src: "/armada-video/armada-2.mp4", title: "Armada Video 2" },
+  { src: "/armada-video/armada-3.mp4", title: "Armada Video 3" },
+  { src: "/armada-video/armada-4.mp4", title: "Armada Video 4" },
+  { src: "/armada-video/armada-5.mp4", title: "Armada Video 5" },
 ];
+
+// Documentation images data
+const documentationImages = Array.from({ length: 29 }, (_, i) => ({
+  src: `/dokumentasi/dokumentasi-${i + 1}.webp`,
+  alt: `Dokumentasi ${i + 1}`,
+}));
 
 // Why choose us data
 const whyChooseUs = [
@@ -583,49 +577,60 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl bg-black opacity-0 animate-fade-up">
-            <div className="aspect-video relative">
-              <video
-                className="w-full h-full object-cover"
-                controls
-                poster="/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp"
-                preload="metadata"
+          {/* Desktop Grid View */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 opacity-0 animate-fade-up">
+            {videoFiles.map((video, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden rounded-2xl bg-black"
               >
-                <source src="/assets/armada-video.mp4" type="video/mp4" />
-                <source src="/assets/armada-video.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-
-              {/* Video Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-
-              {/* Video Controls Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div className="text-white">
-                  <h3 className="text-lg font-semibold">
-                    Video Armada & Layanan
-                  </h3>
-                  <p className="text-sm opacity-90">
-                    Kualitas dan pelayanan terbaik
-                  </p>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="bg-white/20 border-white/30 text-white hover:bg-white/30"
-                  asChild
+                <video
+                  className="w-full h-auto rounded-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
                 >
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Play className="h-4 w-4 mr-2" />
-                    Konsultasi
-                  </a>
-                </Button>
+                  <source src={video.src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Mobile Carousel View */}
+          <div className="md:hidden px-4 opacity-0 animate-fade-up">
+            <Carousel
+              className="w-full touch-pan-y"
+              opts={{
+                align: "start",
+                loop: true,
+                containScroll: "trimSnaps",
+                skipSnaps: false,
+              }}
+              plugins={[]}
+            >
+              <CarouselContent className="ml-0">
+                {videoFiles.map((video, index) => (
+                  <CarouselItem key={index} className="basis-4/5 pl-0">
+                    <div className="relative overflow-hidden rounded-2xl bg-black mx-2">
+                      <video
+                        className="w-full h-auto rounded-lg"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                      >
+                        <source src={video.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
@@ -643,27 +648,53 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceDocumentation.map((doc, index) => (
+          {/* Desktop Grid View */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-4 opacity-0 animate-fade-up">
+            {documentationImages.map((doc, index) => (
               <div
                 key={index}
-                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated opacity-0 animate-fade-up"
+                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated"
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
                 <div className="aspect-square overflow-hidden bg-muted">
                   <img
-                    src={doc.image}
-                    alt={doc.caption}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    src={doc.src}
+                    alt={doc.alt}
+                    className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                   />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm text-muted-foreground text-center">
-                    {doc.caption}
-                  </p>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Carousel View */}
+          <div className="md:hidden px-4 opacity-0 animate-fade-up">
+            <Carousel
+              className="w-full touch-pan-y"
+              opts={{
+                align: "start",
+                loop: true,
+                containScroll: "trimSnaps",
+                skipSnaps: false,
+              }}
+              plugins={[]}
+            >
+              <CarouselContent className="ml-0">
+                {documentationImages.map((doc, index) => (
+                  <CarouselItem key={index} className="basis-3/4 pl-0">
+                    <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-elevated mx-2">
+                      <div className="aspect-square overflow-hidden bg-muted">
+                        <img
+                          src={doc.src}
+                          alt={doc.alt}
+                          className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>

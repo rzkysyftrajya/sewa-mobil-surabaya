@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
-const WHATSAPP_NUMBER = "6281234567890";
+const WHATSAPP_NUMBER = "85373293935";
 
 const footerLinks = {
   layanan: [
@@ -35,16 +35,22 @@ export function Footer() {
           <div className="space-y-4 lg:col-span-2">
             <div className="flex items-center gap-2">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <span className="text-xl font-bold text-primary-foreground">S</span>
+                <span className="text-xl font-bold text-primary-foreground">
+                  S
+                </span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold leading-tight text-foreground">SEWA MOBIL</span>
-                <span className="text-sm font-medium text-primary">SURABAYA</span>
+                <span className="font-bold leading-tight text-foreground">
+                  SEWA MOBIL
+                </span>
+                <span className="text-sm font-medium text-primary">
+                  SURABAYA
+                </span>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Solusi transportasi terpercaya di Surabaya. Melayani kebutuhan mobilitas Anda dengan
-              armada terawat dan pelayanan profesional.
+              Solusi transportasi terpercaya di Surabaya. Melayani kebutuhan
+              mobilitas Anda dengan armada terawat dan pelayanan profesional.
             </p>
           </div>
 
@@ -93,7 +99,7 @@ export function Footer() {
                     href={`tel:+${WHATSAPP_NUMBER}`}
                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
-                    0812-3456-7890
+                    0853 7329 3935
                   </a>
                 </div>
               </li>
@@ -103,7 +109,9 @@ export function Footer() {
                   href="mailto:info@sewamobilsurabaya.com"
                   className="text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
-                  info@sewamobil<br/>surabaya.com
+                  info@sewamobil
+                  <br />
+                  surabaya.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -127,7 +135,8 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="container flex flex-col items-center justify-between gap-4 py-6 text-center md:flex-row md:text-left">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Sewa Mobil Surabaya. Hak cipta dilindungi.
+            © {new Date().getFullYear()} Sewa Mobil Surabaya. Hak cipta
+            dilindungi.
           </p>
           <p className="text-sm text-muted-foreground">
             Layanan Transportasi Profesional di Surabaya

@@ -25,7 +25,7 @@ import {
 
 // WhatsApp link configuration
 const WHATSAPP_LINK =
-  "https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya";
+  "https://wa.me/85373293935?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya";
 
 // Testimonials data
 const testimonials = [

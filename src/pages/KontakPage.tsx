@@ -1,15 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 
-const WHATSAPP_NUMBER = "6281234567890";
+const WHATSAPP_NUMBER = "85373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;
 
 const contactMethods = [
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    description: "Cara tercepat untuk menghubungi kami. Biasanya dibalas dalam 5 menit.",
-    value: "0812-3456-7890",
+    description:
+      "Cara tercepat untuk menghubungi kami. Biasanya dibalas dalam 5 menit.",
+    value: "0853 7329 3935",
     action: WHATSAPP_LINK,
     actionLabel: "Chat Sekarang",
     primary: true,
@@ -18,7 +19,7 @@ const contactMethods = [
     icon: Phone,
     title: "Telepon",
     description: "Untuk pemesanan mendadak atau percakapan langsung.",
-    value: "0812-3456-7890",
+    value: "0853 7329 3935",
     action: `tel:+${WHATSAPP_NUMBER}`,
     actionLabel: "Telepon",
     primary: false,
@@ -60,8 +61,8 @@ export default function KontakPage() {
               Hubungi Kami
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              Siap membantu kebutuhan transportasi Anda. Konsultasi gratis, tanpa kewajiban booking.
-              Kami responsif dan mudah dihubungi.
+              Siap membantu kebutuhan transportasi Anda. Konsultasi gratis,
+              tanpa kewajiban booking. Kami responsif dan mudah dihubungi.
             </p>
           </div>
         </div>
@@ -81,21 +82,37 @@ export default function KontakPage() {
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${
-                  method.primary ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground"
-                }`}>
+                <div
+                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${
+                    method.primary
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-foreground"
+                  }`}
+                >
                   <method.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-1 font-semibold text-foreground">{method.title}</h3>
-                <p className="mb-3 text-sm text-muted-foreground">{method.description}</p>
-                <p className="mb-4 text-lg font-medium text-foreground">{method.value}</p>
+                <h3 className="mb-1 font-semibold text-foreground">
+                  {method.title}
+                </h3>
+                <p className="mb-3 text-sm text-muted-foreground">
+                  {method.description}
+                </p>
+                <p className="mb-4 text-lg font-medium text-foreground">
+                  {method.value}
+                </p>
                 <Button
                   variant={method.primary ? "cta" : "outline"}
                   size="lg"
                   className="w-full"
                   asChild
                 >
-                  <a href={method.action} target={method.action.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                  <a
+                    href={method.action}
+                    target={
+                      method.action.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel="noopener noreferrer"
+                  >
                     {method.actionLabel}
                   </a>
                 </Button>
@@ -122,8 +139,12 @@ export default function KontakPage() {
                   <h3 className="mb-1 text-sm font-medium uppercase tracking-wider text-muted-foreground">
                     {info.title}
                   </h3>
-                  <p className="text-lg font-semibold text-foreground">{info.content}</p>
-                  <p className="text-sm text-muted-foreground">{info.subtext}</p>
+                  <p className="text-lg font-semibold text-foreground">
+                    {info.content}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {info.subtext}
+                  </p>
                 </div>
               ))}
             </div>
@@ -137,13 +158,18 @@ export default function KontakPage() {
           <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card p-8 text-center shadow-card opacity-0 animate-fade-up">
             <h2 className="mb-4 text-2xl font-bold">Tidak Perlu Sungkan</h2>
             <p className="mb-6 text-muted-foreground">
-              Kami paham bahwa memilih layanan transportasi butuh pertimbangan. 
-              Tidak ada pertanyaan yang terlalu kecil atau permintaan yang terlalu spesifik. 
-              Hubungi kami untuk konsultasi—benar-benar gratis dan tanpa tekanan untuk booking.
+              Kami paham bahwa memilih layanan transportasi butuh pertimbangan.
+              Tidak ada pertanyaan yang terlalu kecil atau permintaan yang
+              terlalu spesifik. Hubungi kami untuk konsultasi—benar-benar gratis
+              dan tanpa tekanan untuk booking.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button variant="whatsapp" size="xl" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <MessageCircle className="h-5 w-5" />
                   Mulai Chat WhatsApp
                 </a>

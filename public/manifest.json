@@ -1,0 +1,88 @@
+{
+  "name": "Sewa Mobil Surabaya - Rental Mobil Harian & Dengan Sopir",
+  "short_name": "Sewa Mobil SBY",
+  "description": "Sewa mobil di Surabaya dengan sopir profesional. Armada lengkap, harga terjangkau, service 24/7. Antar jemput banda Juanda, sewa harian, mingguan, bulanan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f3f0",
+  "theme_color": "#D2691E",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "id",
+  "categories": ["business", "transportation"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "platform": "wide",
+      "label": "Armada Toyota Alphard - Sewa Mobil Surabaya"
+    },
+    {
+      "src": "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
+      "sizes": "750x1334",
+      "type": "image/webp",
+      "platform": "narrow",
+      "label": "Armada Toyota Fortuner"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Lihat Armada",
+      "short_name": "Armada",
+      "description": "Lihat semua armada yang tersedia",
+      "url": "/armada",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Kontak Kami",
+      "short_name": "Kontak",
+      "description": "Hubungi kami untuk konsultasi",
+      "url": "/kontak",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "WhatsApp",
+      "short_name": "WA",
+      "description": "Chat via WhatsApp",
+      "url": "https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": { "preferred_width": 400 },
+  "launch_handler": { "client_mode": "focus-existing" },
+  "file_handlers": [
+    {
+      "action": "/upload",
+      "accept": { "image/*": [".jpg", ".jpeg", ".png", ".webp"] }
+    }
+  ],
+  "protocol_handlers": [{ "protocol": "web+sewamobil", "url": "/?car=%s" }],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [{ "name": "files", "accept": ["image/*"] }]
+    }
+  }
+}
