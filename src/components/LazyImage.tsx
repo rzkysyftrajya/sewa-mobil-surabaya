@@ -144,7 +144,7 @@ export const trackImagePerformance = (img: HTMLImageElement) => {
       const entries = list.getEntries();
       entries.forEach((entry) => {
         if (entry.name === img.src) {
-          console.log(`Image loaded: ${img.src} in ${entry.duration}ms`);
+          // Image loaded successfully
         }
       });
     });

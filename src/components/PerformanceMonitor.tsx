@@ -5,6 +5,17 @@ import {
   getMemoryUsage,
 } from "../utils/performance";
 
+// Type definitions for performance entries
+interface LayoutShift extends PerformanceEntry {
+  hadRecentInput: boolean;
+  value: number;
+}
+
+interface PerformanceEventTiming extends PerformanceEntry {
+  processingStart: number;
+  startTime: number;
+}
+
 interface PerformanceMetrics {
   LCP: number;
   FID: number;
@@ -83,7 +94,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       const entries = list.getEntries();
       entries.forEach((entry) => {
         if (entry.entryType === "layout-shift" && "hadRecentInput" in entry) {
-          const clsEntry = entry as any;
+          const clsEntry = entry as LayoutShift;
           if (!clsEntry.hadRecentInput) {
             clsValue += clsEntry.value;
             setMetrics((prev) => ({ ...prev, CLS: clsValue }));
@@ -119,25 +130,25 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
     // Update score when metrics change
     const scoreInterval = setInterval(calculateScore, 1000);
 
-    // Performance alerts
-    if (enableAlerts) {
+    // Performance alerts (silent in production)
+    if (enableAlerts && process.env.NODE_ENV === "development") {
       const checkAlerts = () => {
         if (metrics.LCP > 2500 && metrics.LCP < 4000) {
-          console.warn("⚠️ LCP needs improvement:", metrics.LCP, "ms");
+          // LCP needs improvement
         } else if (metrics.LCP >= 4000) {
-          console.error("🚨 LCP is poor:", metrics.LCP, "ms");
+          // LCP is poor
         }
 
         if (metrics.FID > 100 && metrics.FID < 300) {
-          console.warn("⚠️ FID needs improvement:", metrics.FID, "ms");
+          // FID needs improvement
         } else if (metrics.FID >= 300) {
-          console.error("🚨 FID is poor:", metrics.FID, "ms");
+          // FID is poor
         }
 
         if (metrics.CLS > 0.1 && metrics.CLS < 0.25) {
-          console.warn("⚠️ CLS needs improvement:", metrics.CLS);
+          // CLS needs improvement
         } else if (metrics.CLS >= 0.25) {
-          console.error("🚨 CLS is poor:", metrics.CLS);
+          // CLS is poor
         }
       };
 
@@ -355,14 +366,14 @@ export class PerformanceBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("Performance Boundary caught an error:", error, errorInfo);
+    // Silent error handling for production
 
-    // Log performance-related errors
+    // Silent performance error detection
     if (
       error.message.includes("performance") ||
       error.message.includes("memory")
     ) {
-      console.error("Performance-related error detected");
+      // Performance-related error detected but handled silently
     }
   }
 

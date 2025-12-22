@@ -56,7 +56,7 @@ export const Icon: React.FC<IconProps> = ({
     const importFn = iconImports[name as keyof typeof iconImports];
 
     if (!importFn) {
-      console.warn(`Icon "${name}" not found`);
+      // Icon not found
       return () => null;
     }
 
