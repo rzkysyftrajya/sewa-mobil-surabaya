@@ -126,10 +126,27 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-border">
         <div className="container flex flex-col items-center justify-between gap-4 py-6 text-center md:flex-row md:text-left">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Sewa Mobil Surabaya. Hak cipta
-            dilindungi.
-          </p>
+          <div className="flex flex-col items-center gap-2 md:flex-row md:items-start">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Sewa Mobil Surabaya. Hak cipta
+              dilindungi.
+            </p>
+            <div className="flex items-center gap-4 text-sm">
+              <Link
+                to="/privacy-policy"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Kebijakan Privasi
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link
+                to="/terms"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Syarat & Ketentuan
+              </Link>
+            </div>
+          </div>
           <p className="text-sm text-muted-foreground">
             Layanan Transportasi Profesional di Surabaya
           </p>

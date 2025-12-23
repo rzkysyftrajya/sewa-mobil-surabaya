@@ -119,43 +119,10 @@ export const measurePerformance = (
   return result;
 };
 
-// Core Web Vitals tracking
+// Core Web Vitals tracking - DISABLED FOR GOOGLE ADS COMPLIANCE
 export const trackCoreWebVitals = () => {
-  // LCP (Largest Contentful Paint)
-  new PerformanceObserver((list) => {
-    const entries = list.getEntries();
-    const lastEntry = entries[entries.length - 1];
-    console.log("LCP:", lastEntry.startTime);
-  }).observe({ entryTypes: ["largest-contentful-paint"] });
-
-  // FID (First Input Delay)
-  new PerformanceObserver((list) => {
-    const entries = list.getEntries();
-    entries.forEach((entry) => {
-      if (entry.entryType === "first-input") {
-        const fidEntry = entry as PerformanceEventTiming;
-        console.log("FID:", fidEntry.processingStart - fidEntry.startTime);
-      }
-    });
-  }).observe({ entryTypes: ["first-input"] });
-
-  // CLS (Cumulative Layout Shift)
-  let clsValue = 0;
-  new PerformanceObserver((list) => {
-    const entries = list.getEntries();
-    entries.forEach((entry) => {
-      if (entry.entryType === "layout-shift" && "hadRecentInput" in entry) {
-        const layoutShiftEntry = entry as PerformanceEventTiming & {
-          value: number;
-          hadRecentInput: boolean;
-        };
-        if (!layoutShiftEntry.hadRecentInput) {
-          clsValue += layoutShiftEntry.value;
-          console.log("CLS:", clsValue);
-        }
-      }
-    });
-  }).observe({ entryTypes: ["layout-shift"] });
+  // Performance tracking disabled to avoid Google Ads compliance issues
+  console.log("Core Web Vitals tracking disabled for Google Ads compliance");
 };
 
 // Image preloading
@@ -186,16 +153,10 @@ export const addResourceHints = () => {
   });
 };
 
-// Service Worker registration
+// Service Worker registration - DISABLED FOR GOOGLE ADS COMPLIANCE
 export const registerServiceWorker = async () => {
-  if ("serviceWorker" in navigator) {
-    try {
-      const registration = await navigator.serviceWorker.register("/sw.js");
-      console.log("SW registered: ", registration);
-    } catch (registrationError) {
-      console.log("SW registration failed: ", registrationError);
-    }
-  }
+  // Service Worker registration disabled to avoid Google Ads compliance issues
+  console.log("Service Worker registration disabled for Google Ads compliance");
 };
 
 // Memory usage tracking

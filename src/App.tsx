@@ -13,6 +13,8 @@ import AreaCakupanPage from "./pages/AreaCakupanPage";
 import KenapaKamiPage from "./pages/KenapaKamiPage";
 import FAQPage from "./pages/FAQPage";
 import KontakPage from "./pages/KontakPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsPage from "./pages/TermsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,8 @@ const App = () => (
               <Route path="/kenapa-kami" element={<KenapaKamiPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/kontak" element={<KontakPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
