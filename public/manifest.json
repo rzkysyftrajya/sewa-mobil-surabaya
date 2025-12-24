@@ -45,50 +45,21 @@
       "name": "Lihat Armada",
       "short_name": "Armada",
       "description": "Lihat semua armada yang tersedia",
-      "url": "/armada",
-      "icons": [
-        { "src": "/favicon_io/android-chrome-192x192.png", "sizes": "192x192" }
-      ]
+      "url": "/armada"
     },
     {
       "name": "Kontak Kami",
       "short_name": "Kontak",
       "description": "Hubungi kami untuk konsultasi",
-      "url": "/kontak",
-      "icons": [
-        { "src": "/favicon_io/android-chrome-192x192.png", "sizes": "192x192" }
-      ]
+      "url": "/kontak"
     },
     {
       "name": "WhatsApp",
       "short_name": "WA",
       "description": "Chat via WhatsApp",
-      "url": "https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya",
-      "icons": [
-        { "src": "/favicon_io/android-chrome-192x192.png", "sizes": "192x192" }
-      ]
+      "url": "https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya"
     }
   ],
   "related_applications": [],
-  "prefer_related_applications": false,
-  "edge_side_panel": { "preferred_width": 400 },
-  "launch_handler": { "client_mode": "focus-existing" },
-  "file_handlers": [
-    {
-      "action": "/upload",
-      "accept": { "image/*": [".jpg", ".jpeg", ".png", ".webp"] }
-    }
-  ],
-  "protocol_handlers": [{ "protocol": "web+sewamobil", "url": "/?car=%s" }],
-  "share_target": {
-    "action": "/share",
-    "method": "POST",
-    "enctype": "multipart/form-data",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url",
-      "files": [{ "name": "files", "accept": ["image/*"] }]
-    }
-  }
+  "prefer_related_applications": false
 }
