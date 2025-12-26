@@ -309,7 +309,7 @@ const testimonials = [
     name: "Ahmad Wijaya",
     role: "Corporate Client",
     content:
-      "Sewa mobil untuk tim kantor selalu puas dengan pelayanannya. Tepat waktu dan harga wajar. Terus berlanjut的合作annya.",
+      "Sewa mobil untuk tim kantor selalu puas dengan pelayanannya. Tepat waktu dan harga wajar.",
     rating: 5,
     avatar: "AW",
   },
@@ -1269,6 +1269,63 @@ const HomePage = () => {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* Lokasi Kami Section */}
+      <section id="lokasi-kami" className="py-16 md:py-24">
+        <div className="container">
+          <div className="mx-auto mb-12 max-w-2xl text-center opacity-0 animate-fade-up">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Lokasi Kami</h2>
+            <p className="text-lg text-muted-foreground">
+              Kunjungi kantor kami atau lihat lokasi layanan sewa mobil Surabaya
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-5xl opacity-0 animate-fade-up delay-200">
+            <div className="rounded-2xl border border-border bg-card shadow-card overflow-hidden">
+              <div className="aspect-[16/10] sm:aspect-[16/9] md:aspect-[16/8] lg:aspect-[16/7] relative">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.096112306946!2d112.72506109999999!3d-7.3431033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb9cc4035e1b%3A0xa301f239a06002c1!2ssewamobilsurabaya!5e0!3m2!1sid!2sid!4v1766739360350!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+              <div className="p-6 md:p-8">
+                <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:text-left sm:items-start sm:justify-between">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground shrink-0">
+                      <MapPin className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="mb-2 text-lg font-semibold text-foreground">
+                        Alamat Kantor
+                      </h3>
+                      <p className="text-muted-foreground">
+                        MP4G+Q23, Jl. Dukuh Menanggal, Dukuh Menanggal, Kec.
+                        Gayungan, Surabaya, Jawa Timur 60243
+                      </p>
+                    </div>
+                  </div>
+                  <Button variant="outline" size="sm" asChild>
+                    <a
+                      href="https://maps.google.com/?q=MP4G+Q23,+Jl.+Dukuh+Menanggal,+Dukuh+Menanggal,+Kec.+Gayungan,+Surabaya,+Jawa+Timur+60243"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MapPin className="h-4 w-4 mr-2" />
+                      Buka di Google Maps
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

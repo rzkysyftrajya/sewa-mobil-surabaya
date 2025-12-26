@@ -22,6 +22,7 @@ const footerLinks = {
     { label: "Area Layanan", href: "/area-cakupan" },
     { label: "Kenapa Kami", href: "/kenapa-kami" },
     { label: "FAQ", href: "/faq" },
+    { label: "Lihat Lokasi Kami", href: "/#lokasi-kami" },
     { label: "Hubungi Kami", href: "/kontak" },
   ],
 };
