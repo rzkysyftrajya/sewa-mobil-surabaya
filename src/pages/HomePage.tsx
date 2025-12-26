@@ -46,7 +46,15 @@ const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya`;
 
 // Services data with enhanced navigation
-const services = [
+type Service = {
+  title: string;
+  description: string;
+  href: string;
+  serviceId: string;
+  icon: React.ElementType;
+};
+
+const services: Service[] = [
   {
     icon: Car,
     title: "Sewa Mobil Harian",
@@ -179,7 +187,13 @@ const documentationImages = Array.from({ length: 29 }, (_, i) => ({
 }));
 
 // Why choose us data
-const whyChooseUs = [
+type WhyChooseUsItem = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+};
+
+const whyChooseUs: WhyChooseUsItem[] = [
   {
     icon: Clock,
     title: "Respons Cepat",
@@ -198,7 +212,14 @@ const whyChooseUs = [
 ];
 
 // Statistics data
-const statistics = [
+type StatisticItem = {
+  icon: React.ElementType;
+  number: string;
+  label: string;
+  description: string;
+};
+
+const statistics: StatisticItem[] = [
   {
     icon: Users,
     number: "2500+",
@@ -226,7 +247,14 @@ const statistics = [
 ];
 
 // Booking steps data
-const bookingSteps = [
+type BookingStep = {
+  step: string;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+};
+
+const bookingSteps: BookingStep[] = [
   {
     step: "1",
     title: "Pilih Layanan",
@@ -698,9 +726,7 @@ const HomePage = () => {
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  {React.createElement(service.icon as any, {
-                    className: "h-6 w-6",
-                  })}
+                  <service.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-foreground">
                   {service.title}
@@ -1032,9 +1058,7 @@ const HomePage = () => {
                 {whyChooseUs.map((item) => (
                   <div key={item.title} className="flex gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                      {React.createElement(item.icon as any, {
-                        className: "h-6 w-6",
-                      })}
+                      <item.icon className="h-6 w-6" />
                     </div>
                     <div>
                       <h3 className="mb-1 font-semibold text-foreground">
@@ -1104,9 +1128,7 @@ const HomePage = () => {
               >
                 <div className="mb-4 flex justify-center">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/10 to-primary/20 transition-all group-hover:from-primary/20 group-hover:to-primary/30">
-                    {React.createElement(stat.icon as any, {
-                      className: "h-8 w-8 text-primary",
-                    })}
+                    <stat.icon className="h-8 w-8 text-primary" />
                   </div>
                 </div>
                 <div className="mb-2 text-3xl font-bold text-primary">
@@ -1200,9 +1222,7 @@ const HomePage = () => {
                 <div className="mb-6 flex justify-center">
                   <div className="relative">
                     <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg">
-                      {React.createElement(step.icon as any, {
-                        className: "h-10 w-10",
-                      })}
+                      <step.icon className="h-10 w-10" />
                     </div>
                     <div className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-foreground font-bold text-sm">
                       {step.step}
