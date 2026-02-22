@@ -7,6 +7,7 @@ import logoImage from "/logo.png";
 const navLinks = [
   { href: "/", label: "Beranda" },
   { href: "/layanan", label: "Layanan" },
+  { href: "/tour-surabaya", label: "Tour" },
   { href: "/armada", label: "Armada" },
   { href: "/area-cakupan", label: "Area" },
   { href: "/kenapa-kami", label: "Kenapa Kami" },

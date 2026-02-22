@@ -15,6 +15,7 @@ import FAQPage from "./pages/FAQPage";
 import KontakPage from "./pages/KontakPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsPage from "./pages/TermsPage";
+import TourSurabayaPage from "./pages/TourSurabayaPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
               <Route path="/kontak" element={<KontakPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+              <Route path="/tour-surabaya" element={<TourSurabayaPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
