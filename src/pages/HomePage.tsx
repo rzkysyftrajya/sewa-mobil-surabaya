@@ -41,6 +41,8 @@ import {
   Key,
 } from "lucide-react";
 
+import PromoLebaranSection from "@/components/PromoLebaranSection";
+
 // WhatsApp link configuration
 const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20tertarik%20dengan%20layanan%20sewa%20mobil%20Surabaya`;
@@ -703,6 +705,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Promo Lebaran Section */}
+      <PromoLebaranSection />
 
       {/* Services Section */}
       <section className="py-16 md:py-24">
