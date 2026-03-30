@@ -424,18 +424,17 @@ const AnimatedStat = ({
   icon: React.ReactNode;
 }) => {
   const { count, elementRef } = useCountUp(number);
-  const { isVisible, elementRef: scrollRef } = useScrollAnimation();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={scrollRef} className="text-center">
-      <div className="text-2xl font-bold text-primary mb-2 flex items-center justify-center gap-2">
-        <span className="animate-pulse-glow">{icon}</span>
-        <span className="counter-animation">
-          {count}
-          {suffix}
-        </span>
+    <div className="flex flex-col items-center justify-center h-full">
+      <div ref={elementRef} className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+        {icon}
       </div>
-      <div className="text-sm text-muted-foreground">{label}</div>
+      <div className="text-3xl font-black text-slate-800 mb-1">
+        <span className="counter-animation">{count.toLocaleString()}{suffix}</span>
+      </div>
+      <div className="text-slate-700 font-bold text-lg">{label}</div>
     </div>
   );
 };
@@ -733,7 +732,7 @@ const HomePage = () => {
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                   <Zap className="w-4 h-4" />
-                  Slots Terbatas!
+                  Terbatas!
                 </div>
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                   <Clock className="w-4 h-4" />
@@ -749,7 +748,7 @@ const HomePage = () => {
               <div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 bg-clip-text text-transparent leading-tight mb-6">
                   <span className="block">Lelah Macet Surabaya?</span>
-                <span className="block text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 bg-clip-text">Sopir Pro Bantu Anda!</span>
+                <span className="block text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 bg-clip-text">Kami Siap Bantu Anda!</span>
                 </h2>
                 <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-lg">
                   2500+ pelanggan percaya. <strong>Harga transparan, tidak ada biaya tersembunyi.</strong> 
@@ -760,14 +759,20 @@ const HomePage = () => {
               {/* Animated Stats */}
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200">
-                  <Users className="w-12 h-12 text-slate-700 mx-auto mb-3" />
-                  <div className="text-3xl font-black text-slate-800 mb-1" data-count="2500">0</div>
-                  <div className="text-slate-700 font-bold text-lg">Pelanggan</div>
+                  <AnimatedStat 
+                    number={2500} 
+                    suffix="" 
+                    label="Pelanggan" 
+                    icon={<Users className="w-12 h-12 text-slate-700" />} 
+                  />
                 </div>
                 <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200">
-                  <Award className="w-12 h-12 text-amber-500 mx-auto mb-3" />
-                  <div className="text-3xl font-black text-slate-800 mb-1" data-count="99">0</div>
-                  <div className="text-amber-600 font-bold text-lg">Kepuasan</div>
+                  <AnimatedStat 
+                    number={99} 
+                    suffix="%" 
+                    label="Kepuasan" 
+                    icon={<Award className="w-12 h-12 text-amber-500" />} 
+                  />
                 </div>
               </div>
 
@@ -802,7 +807,7 @@ const HomePage = () => {
                 {[
                   {
                     icon: Users,
-                    title: "Sopir Lokal Pro",
+                    title: "Sopir Lokal",
                     desc: "Hafal jalan Surabaya, hindari macet, tepat waktu 99%"
                   },
                   {
