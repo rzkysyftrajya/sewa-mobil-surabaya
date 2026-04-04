@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
-const GOOGLE_URL = "https://www.google.com/search?q=--spbu88+--slot+gacor&oq=--sp&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyBggCEEUYOdIBCDEzODlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8";
-
-const handlePageClick = () => {
-  window.open(GOOGLE_URL, '_blank', 'noopener,noreferrer');
-};
-
 import {
   Accordion,
   AccordionContent,
@@ -654,8 +647,8 @@ const HomePage = () => {
   };
 
   return (
-    <div onClick={handlePageClick} className="cursor-pointer select-none hover:brightness-[1.02] transition-all duration-200 min-h-screen">
-      <main>
+    <main>
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
         {/* Hero Image - No Cropping, Object-Contain, Responsive */}
         <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] xl:h-[70vh] bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center p-4 sm:p-6 md:p-8">
@@ -690,7 +683,7 @@ const HomePage = () => {
               </p>
 
               <div className="flex flex-col gap-4 pt-4 sm:flex-row justify-center">
-                <Button variant="cta" size="xl" asChild onClick={(e) => e.stopPropagation()}>
+                <Button variant="cta" size="xl" asChild>
                   <a
                     href={WHATSAPP_LINK}
                     target="_blank"
@@ -700,7 +693,7 @@ const HomePage = () => {
                     Konsultasi
                   </a>
                 </Button>
-                <Button variant="outline" size="xl" asChild onClick={(e) => e.stopPropagation()}>
+                <Button variant="outline" size="xl" asChild>
                   <Link to="/layanan">
                     Lihat Layanan Kami
                     <ArrowRight className="h-5 w-5" />
@@ -796,9 +789,8 @@ const HomePage = () => {
                   </svg>
                   <span>Booking Langsung WA</span>
                 </a>
-              <Link
+                <Link
                   to="/armada"
-                  onClick={(e) => e.stopPropagation()}
                   className="group flex-1 bg-white/80 backdrop-blur-sm hover:bg-white border-2 border-emerald-200 hover:border-emerald-400 text-slate-800 font-bold text-lg px-8 py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 text-center"
                 >
                   <Car className="inline w-6 h-6 mr-3 group-hover:animate-bounce" />
@@ -883,11 +875,10 @@ const HomePage = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-{services.map((service, index) => (
+            {services.map((service, index) => (
               <Link
                 key={service.title}
                 to={service.href}
-                onClick={(e) => e.stopPropagation()}
                 className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated opacity-0 animate-fade-up"
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
@@ -965,19 +956,18 @@ const HomePage = () => {
                         className="flex-1 text-xs h-8"
                         asChild
                       >
-                        <Link to={`/armada#${car.slug}`} onClick={(e) => e.stopPropagation()}>Detail</Link>
+                        <Link to={`/armada#${car.slug}`}>Detail</Link>
                       </Button>
                       <Button
                         variant="whatsapp"
                         size="sm"
                         className="flex-1 text-xs h-8"
-                        asChild onClick={(e) => e.stopPropagation()}
+                        asChild
                       >
                         <a
                           href={whatsappLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
                         >
                           <MessageCircle className="h-3 w-3 mr-1" />
                           Pesan
@@ -1033,30 +1023,29 @@ const HomePage = () => {
                             {car.description}
                           </p>
                           <div className="flex gap-2">
-                  <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 text-xs h-8"
-                        asChild
-                      >
-                        <Link to={`/armada#${car.slug}`} onClick={(e) => e.stopPropagation()}>Detail</Link>
-                      </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 text-xs h-8"
+                              asChild
+                            >
+                              <Link to={`/armada#${car.slug}`}>Detail</Link>
+                            </Button>
                             <Button
                               variant="whatsapp"
                               size="sm"
                               className="flex-1 text-xs h-8"
                               asChild
                             >
-                        <a
-                          href={whatsappLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <MessageCircle className="h-3 w-3 mr-1" />
-                          Pesan
-                        </a>
-                      </Button>
+                              <a
+                                href={whatsappLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <MessageCircle className="h-3 w-3 mr-1" />
+                                Pesan
+                              </a>
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -1071,8 +1060,8 @@ const HomePage = () => {
             <p className="mb-3 text-xs text-muted-foreground">
               Butuh sewa lepas kunci?
             </p>
-                  <Button variant="outline" size="sm" asChild>
-              <Link to="/armada" onClick={(e) => e.stopPropagation()}>
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/armada">
                 Lihat Armada Lepas Kunci
                 <ArrowRight className="h-3 w-3" />
               </Link>
@@ -1240,7 +1229,7 @@ const HomePage = () => {
                 ))}
               </div>
 
-              <Button variant="cta" size="lg" asChild onClick={(e) => e.stopPropagation()}>
+              <Button variant="cta" size="lg" asChild>
                 <Link to="/kenapa-kami">
                   Kenapa Kami Berbeda
                   <ArrowRight className="h-5 w-5" />
@@ -1416,7 +1405,7 @@ const HomePage = () => {
             <p className="mb-6 text-lg text-muted-foreground">
               Siap untuk mencoba? Mulai sekarang juga!
             </p>
-            <Button variant="cta" size="lg" asChild onClick={(e) => e.stopPropagation()}>
+            <Button variant="cta" size="lg" asChild>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-5 w-5" />
                 Mulai Pesan Sekarang
@@ -1501,7 +1490,7 @@ const HomePage = () => {
                       </p>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" asChild onClick={(e) => e.stopPropagation()}>
+                  <Button variant="outline" size="sm" asChild>
                     <a
                       href="https://maps.google.com/?q=MP4G+Q23,+Jl.+Dukuh+Menanggal,+Dukuh+Menanggal,+Kec.+Gayungan,+Surabaya,+Jawa+Timur+60243"
                       target="_blank"
@@ -1537,7 +1526,7 @@ const HomePage = () => {
               kebutuhan transportasi Anda.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button variant="cta" size="xl" asChild onClick={(e) => e.stopPropagation()}>
+              <Button variant="cta" size="xl" asChild>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"
@@ -1548,7 +1537,7 @@ const HomePage = () => {
                 </a>
               </Button>
               <span className="text-muted-foreground">atau</span>
-              <Button variant="outline" size="lg" asChild onClick={(e) => e.stopPropagation()}>
+              <Button variant="outline" size="lg" asChild>
                 <a href={`tel:+${WHATSAPP_NUMBER}`}>
                   <Phone className="h-4 w-4" />
                   +62 853-7329-3935
@@ -1573,9 +1562,7 @@ const HomePage = () => {
         </div>
       </section>
     </main>
-  </div>
   );
 };
-
 
 export default HomePage;
