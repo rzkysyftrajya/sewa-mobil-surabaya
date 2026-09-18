@@ -4,10 +4,17 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingi
 export function WhatsAppFloat() {
   return (
     <a
-      href={WHATSAPP_LINK}
+       href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142,70%,49%)] text-primary-foreground shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl md:h-16 md:w-16"
+      onClick={() => {
+        const reportConversion = (window as any).gtag_report_conversion;
+
+        if (typeof reportConversion === "function") {
+          reportConversion();
+        }
+      }}
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142,70%,49%)] text-primary-foreground"
       aria-label="Chat via WhatsApp"
     >
       <img
