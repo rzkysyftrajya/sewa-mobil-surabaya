@@ -76,6 +76,24 @@
       gtag("js", new Date());
       gtag("config", "AW-17057397691");
     </script>
+    
+    <!-- Konversi Klik WhatsApp - Surabaya -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof url !== 'undefined') {
+      window.location = url;
+    }
+  };
+
+  gtag('event', 'conversion', {
+    send_to: 'AW-17057397691/JAeJCMWCpvwcELv3zMU_',
+    event_callback: callback
+  });
+
+  return false;
+}
+</script>
 
     <!-- Security Headers - REMOVED FOR GOOGLE ADS COMPLIANCE -->
     <!-- All security moved to HTTP headers only -->
