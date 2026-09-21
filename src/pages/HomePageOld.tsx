@@ -26,6 +26,7 @@ import {
   CheckCircle,
   MessageCircle,
   TrendingUp,
+  type LucideIcon,
 } from "lucide-react";
 
 const heroImage = "/assets/hero-surabaya.svg";
@@ -40,7 +41,14 @@ const carFortuner = "/assets/car-fortuner.svg";
 const WHATSAPP_NUMBER = "6285373293935";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo,%20saya%20ingin%20konsultasi%20sewa%20mobil%20di%20Surabaya`;
 
-const services = [
+type Service = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  href: string;
+};
+
+const services: Service[] = [
   {
     icon: Car,
     title: "Sewa Mobil Harian",
@@ -324,7 +332,7 @@ export default function HomePage() {
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  {React.createElement(service.icon as any, {
+                  {React.createElement(service.icon, {
                     className: "h-6 w-6",
                   })}
                 </div>

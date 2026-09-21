@@ -563,7 +563,7 @@ export default function TourSurabayaPage() {
       </section>
 
       {/* Tour Packages */}
-      <section className="py-16 md:py-24">
+      <section id="paket-wisata" className="scroll-mt-24 py-16 md:py-24">
         <div className="container">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="mb-4 text-2xl font-bold md:text-3xl lg:text-4xl">

@@ -29,8 +29,8 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
-      <div className="container py-12 md:py-16">
+    <footer className="border-t border-white/10 bg-charcoal text-white">
+      <div className="container py-12 md:py-20">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="space-y-4 lg:col-span-2">
@@ -41,21 +41,24 @@ export function Footer() {
                 className="h-16 w-auto"
               />
             </div>
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="max-w-sm text-sm leading-relaxed text-white/55">
               Solusi transportasi terpercaya di Surabaya. Melayani kebutuhan
               mobilitas Anda dengan armada terawat dan pelayanan profesional.
+            </p>
+            <p className="text-xs font-medium uppercase tracking-[0.12em] text-white/45">
+              Bagian dari PT Vicky Rentcar Nusantara
             </p>
           </div>
 
           {/* Layanan Links */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Layanan</h4>
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-white/45">Layanan</h4>
             <ul className="space-y-3">
               {footerLinks.layanan.map((link) => (
                 <li key={link.href + link.label}>
                   <Link
                     to={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/70 transition-colors hover:text-primary"
                   >
                     {link.label}
                   </Link>
@@ -66,13 +69,13 @@ export function Footer() {
 
           {/* Armada Links */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Armada</h4>
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-white/45">Armada</h4>
             <ul className="space-y-3">
               {footerLinks.armada.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/70 transition-colors hover:text-primary"
                   >
                     {link.label}
                   </Link>
@@ -83,14 +86,14 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Hubungi</h4>
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-white/45">Hubungi</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 text-primary" />
                 <div>
                   <a
                     href={`tel:+${WHATSAPP_NUMBER}`}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/70 transition-colors hover:text-primary"
                   >
                     +62 853-7329-3935
                   </a>
@@ -100,7 +103,7 @@ export function Footer() {
                 <Mail className="mt-0.5 h-4 w-4 text-primary" />
                 <a
                   href="mailto:info@sewamobilsurabaya.com"
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="text-sm text-white/70 transition-colors hover:text-primary"
                 >
                   info@sewamobil
                   <br />
@@ -109,13 +112,13 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-white/70">
                   Surabaya, Jawa Timur
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-4 w-4 text-primary" />
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-white/70">
                   24 Jam, Setiap Hari
                 </span>
               </li>
@@ -125,30 +128,30 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-border">
+      <div className="border-t border-white/10">
         <div className="container flex flex-col items-center justify-between gap-4 py-6 text-center md:flex-row md:text-left">
           <div className="flex flex-col items-center gap-2 md:flex-row md:items-start">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Sewa Mobil Surabaya. Hak cipta
-              dilindungi.
+            <p className="text-sm text-white/45">
+              © {new Date().getFullYear()} Sewa Mobil Surabaya, bagian dari PT
+              Vicky Rentcar Nusantara. Hak cipta dilindungi.
             </p>
             <div className="flex items-center gap-4 text-sm">
               <Link
                 to="/privacy-policy"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-white/45 transition-colors hover:text-primary"
               >
                 Kebijakan Privasi
               </Link>
-              <span className="text-muted-foreground">•</span>
+              <span className="text-white/25">•</span>
               <Link
                 to="/terms"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-white/45 transition-colors hover:text-primary"
               >
                 Syarat & Ketentuan
               </Link>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-white/45">
             Layanan Transportasi Profesional di Surabaya
           </p>
         </div>

@@ -16,7 +16,10 @@ import KontakPage from "./pages/KontakPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsPage from "./pages/TermsPage";
 import TourSurabayaPage from "./pages/TourSurabayaPage";
+import SewaMobilSurabayaPage from "./pages/SewaMobilSurabayaPage";
+import SewaHiaceSurabayaPage from "./pages/SewaHiaceSurabayaPage";
 import NotFound from "./pages/NotFound";
+import HiaceDestinationPage from "./pages/HiaceDestinationPage";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,9 @@ const App = () => (
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/tour-surabaya" element={<TourSurabayaPage />} />
+              <Route path="/hiace/:destination" element={<HiaceDestinationPage />} />
+              <Route path="/sewa-mobil-surabaya" element={<SewaMobilSurabayaPage />} />
+              <Route path="/sewa-hiace-surabaya" element={<SewaHiaceSurabayaPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
