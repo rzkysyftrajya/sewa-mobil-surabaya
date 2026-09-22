@@ -10,7 +10,7 @@
       name="description"
       content="Sewa mobil di Surabaya dengan sopir profesional. Armada lengkap, harga terjangkau, service 24/7. Antar jemput banda Juanda, sewa harian, mingguan, bulanan."
     />
-    <meta name="author" content="PT Vicky Rentcar Nusantara" />
+    <meta name="author" content="SEWA MOBIL SURABAYA" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="Indonesian" />
 
@@ -70,7 +70,7 @@
     <!-- Google tag (gtag.js) -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-17057397691"
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18468288552"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -79,25 +79,70 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "AW-17057397691");
+      gtag("config", "AW-18468288552");
     </script>
 
     <!-- Konversi Klik WhatsApp - Surabaya -->
     <script>
+      var lastWhatsAppConversion = 0;
+
       function gtag_report_conversion(url) {
+        var now = Date.now();
+
+        // Mencegah satu klik tercatat dua kali
+        if (now - lastWhatsAppConversion < 2000) {
+          return false;
+        }
+
+        lastWhatsAppConversion = now;
+        var redirected = false;
+
         var callback = function () {
-          if (typeof url !== "undefined") {
-            window.location = url;
+          if (!redirected && url) {
+            redirected = true;
+            window.location.href = url;
           }
         };
 
-        gtag("event", "conversion", {
-          send_to: "AW-17057397691/JAeJCMWCpvwcELv3zMU_",
-          event_callback: callback,
-        });
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-18468288552/w0VbCOzWzYEdEKjwruZE",
+            event_callback: callback,
+          });
+
+          // WhatsApp tetap terbuka jika callback Google terlambat
+          setTimeout(callback, 1500);
+        } else {
+          callback();
+        }
 
         return false;
       }
+
+      // Otomatis mendeteksi seluruh link WhatsApp
+      document.addEventListener(
+        "click",
+        function (event) {
+          var target =
+            event.target instanceof Element ? event.target : null;
+
+          if (!target) return;
+
+          var link = target.closest(
+            'a[href*="wa.me/"],' +
+              'a[href*="api.whatsapp.com/"],' +
+              'a[href*="web.whatsapp.com/"],' +
+              'a[href*="wa.link/"],' +
+              'a[href^="whatsapp://"]'
+          );
+
+          if (!link) return;
+
+          event.preventDefault();
+          gtag_report_conversion(link.href);
+        },
+        true
+      );
     </script>
 
     <!-- Open Graph / Social Media -->
