@@ -81,6 +81,14 @@ const services: Service[] = [
 // Armada data - Simplified cards with descriptions
 const armadaCars = [
   {
+    name: "Hiace Premio",
+    capacity: "10-12 penumpang",
+    image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
+    description:
+      "Minibus premium 12-16 penumpang dengan AC ducting dan interior mewah",
+    slug: "toyota-hiace-premio",
+  },
+  {
     name: "Toyota Alphard",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/TOYOTA-ALPHARD.webp",
@@ -89,23 +97,7 @@ const armadaCars = [
     slug: "toyota-alphard",
   },
   {
-    name: "Toyota Hiace Premio",
-    capacity: "10-12 penumpang",
-    image: "/assets/armada-lepas-kunci/HIACE-PREMIO.webp",
-    description:
-      "Minibus premium 12-16 penumpang dengan AC ducting dan interior mewah",
-    slug: "toyota-hiace-premio",
-  },
-  {
-    name: "Toyota Hiace Commuter",
-    capacity: "12-15 penumpang",
-    image: "/assets/armada-lepas-kunci/HIACE-COMMUTER.webp",
-    description:
-      "Minibus ekonomis 12-16 penumpang, cocok untuk rombongan dengan budget terjangkau",
-    slug: "toyota-hiace-commuter",
-  },
-  {
-    name: "Toyota Innova Zenix",
+    name: "Innova Zenix",
     capacity: "7-8 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-ZENIX.webp",
     description:
@@ -113,42 +105,11 @@ const armadaCars = [
     slug: "toyota-innova-zenix",
   },
   {
-    name: "Mitsubishi Pajero",
-    capacity: "7 penumpang",
-    image: "/assets/armada-lepas-kunci/MITSUBISHI-PAJERO.webp",
-    description:
-      "SUV premium 4WD tangguh untuk off-road dan tampilan prestisius",
-    slug: "mitsubishi-pajero",
-  },
-  {
-    name: "Toyota Fortuner",
-    capacity: "7-8 penumpang",
-    image: "/assets/armada-lepas-kunci/TOYOTA-FORTUNER.webp",
-    description:
-      "SUV diesel 4WD kokoh untuk perjalanan luar kota dan medan berat",
-    slug: "toyota-fortuner",
-  },
-  {
-    name: "Toyota Hilux Double Cabin",
-    capacity: "4-5 penumpang",
-    image: "/assets/armada-lepas-kunci/HILUX-DOUBLE-CABIN.webp",
-    description: "Pickup 4WD untuk kebutuhan logistik dan petualangan off-road",
-    slug: "toyota-hilux-double-cabin",
-  },
-  {
-    name: "Toyota Innova Reborn",
+    name: "Innova Reborn",
     capacity: "6-7 penumpang",
     image: "/assets/armada-lepas-kunci/INNOVA-REBORN.webp",
     description: "MPV keluarga nyaman dengan fitur lengkap dan performa handal",
     slug: "toyota-innova-reborn",
-  },
-  {
-    name: "Toyota Avanza",
-    capacity: "6-7 penumpang",
-    image: "/assets/armada-lepas-kunci/AVANZA.webp",
-    description:
-      "MPV ekonomis 6-7 penumpang, pilihan populer untuk keluarga budget terbatas",
-    slug: "toyota-avanza",
   },
 ];
 
@@ -170,6 +131,19 @@ const documentationImages = Array.from({ length: 29 }, (_, i) => ({
   src: `/dokumentasi/dokumentasi-${i + 1}.webp`,
   alt: `Dokumentasi ${i + 1}`,
 }));
+const clientLogos = [
+  { name: "BPKH", src: "/clients/bpkh.webp" },
+  { name: "Edelweis Tour & Travel", src: "/clients/edelweis-tour&travel.webp" },
+  { name: "Kementerian Pertanian", src: "/clients/kementerian-pertanian.webp" },
+  { name: "KPU", src: "/clients/kpu.webp" },
+  { name: "Medika Plaza Indonesia", src: "/clients/medika-plaza-indonesia.webp" },
+  { name: "PT Agrinas", src: "/clients/pt.agrinas.webp" },
+  { name: "PT Interbat", src: "/clients/pt.interbat.webp" },
+  { name: "PT NAI", src: "/clients/pt.nai.webp" },
+  { name: "PT PDC", src: "/clients/pt.pdc.webp" },
+  { name: "PT Pempem", src: "/clients/pt.pempem.webp" },
+  { name: "PT Propelanspace", src: "/clients/pt.propelanspace.webp" },
+];
 
 // Why choose us data
 type WhyChooseUsItem = {
@@ -632,70 +606,114 @@ const HomePage = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#1f1d1c] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,128,55,0.18),transparent_36%)]" />
-        <div className="container relative grid min-h-[640px] items-center gap-12 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
-          <div className="relative z-10 max-w-xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#2d2a2a] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f5b899]">
-              <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_0_5px_rgba(234,120,54,0.18)]" />
-              Rental mobil terpercaya di Surabaya
-            </div>
-            <h1 className="text-5xl font-black leading-[0.95] tracking-[-0.05em] text-white sm:text-6xl lg:text-[5rem]">
-              Bergerak lebih jauh,
-              <span className="mt-2 block text-primary">tanpa ribet.</span>
-            </h1>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
-              Armada bersih, proses cepat, dan layanan yang terasa personal untuk perjalanan bisnis, keluarga, maupun liburan Anda.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-start">
-              <Button variant="cta" size="xl" className="rounded-full px-7" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-5 w-5" />
-                  Konsultasi sekarang
-                </a>
+      <section className="relative isolate flex min-h-[720px] items-center overflow-hidden bg-[#1f1d1c] text-white lg:min-h-[calc(100svh-72px)]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_15%,rgba(255,128,55,0.2),transparent_55%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-[42%] min-h-[240px] sm:h-[48%]">
+          <img
+            src="/hero-section.webp"
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover object-[center_90%] opacity-70"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1f1d1c] via-[#1f1d1c]/20 to-[#1f1d1c]/70" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#1f1d1c] to-transparent" />
+        </div>
+        <div className="container relative z-10 mx-auto flex w-full flex-col items-center py-14 pb-64 text-center sm:py-20 sm:pb-72">
+          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
+            <span className="rounded-full bg-white px-2 py-0.5 text-xs font-semibold text-[#1f1d1c]">
+              Surabaya
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-white/85 sm:text-sm">
+              Rental mobil terpercaya
+            </span>
+          </div>
+          <h1 className="max-w-4xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            Bergerak lebih jauh,
+            <span className="mt-1 block text-primary">tanpa ribet.</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+            Armada bersih, proses cepat, dan layanan yang terasa personal untuk perjalanan bisnis, keluarga, maupun liburan Anda.
+          </p>
+          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:justify-center">
+            <Button variant="cta" size="xl" className="rounded-full px-7" asChild>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5" />
+                Konsultasi sekarang
+              </a>
+            </Button>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button
+                variant="outline"
+                size="xl"
+                className="rounded-full border-white/25 bg-white/10 px-6 text-white backdrop-blur-sm hover:bg-white hover:text-charcoal"
+                asChild
+              >
+                <Link to="/sewa-mobil-surabaya">
+                  Sewa Mobil <ArrowRight className="h-5 w-5" />
+                </Link>
               </Button>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button
-                  variant="outline"
-                  size="xl"
-                  className="rounded-full border-white/20 bg-white/5 px-7 text-white hover:bg-white hover:text-charcoal"
-                  asChild
-                >
-                  <Link to="/sewa-mobil-surabaya">
-                    Sewa Mobil Surabaya <ArrowRight className="h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="xl"
-                  className="rounded-full border-white/20 bg-white/5 px-7 text-white hover:bg-white hover:text-charcoal"
-                  asChild
-                >
-                  <Link to="/sewa-hiace-surabaya">
-                    Sewa Hiace Surabaya <ArrowRight className="h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-white/10 pt-6 text-sm text-white/70">
-              <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Booking 5 menit</span>
-              <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> Armada terawat</span>
-              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> Siap 24 jam</span>
+              <Button
+                variant="outline"
+                size="xl"
+                className="rounded-full border-white/25 bg-white/10 px-6 text-white backdrop-blur-sm hover:bg-white hover:text-charcoal"
+                asChild
+              >
+                <Link to="/sewa-hiace-surabaya">
+                  Sewa Hiace <ArrowRight className="h-5 w-5" />
+                </Link>
+              </Button>
             </div>
           </div>
+          <div className="mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-white/80">
+            <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Booking 5 menit</span>
+            <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> Armada terawat</span>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> Siap 24 jam</span>
+          </div>
+        </div>
+      </section>
 
-          <div className="relative flex min-h-[320px] items-end justify-center lg:min-h-[500px]">
-            <div className="absolute inset-x-8 bottom-0 top-6 rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),rgba(15,15,15,0.9)_72%)] shadow-[0_30px_80px_rgba(0,0,0,0.35)]" />
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#1f1d1c] via-[#1f1d1c]/80 to-transparent" />
-            <img
-              src="/hero-section.webp"
-              alt="Armada premium Sewa Mobil Surabaya"
-              className="relative z-10 w-full max-w-[980px] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.55)]"
-            />
-            <div className="absolute bottom-6 left-8 z-20 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/80 backdrop-blur-sm">
-              Armada pilihan
-            </div>
+      <section
+        aria-labelledby="satisfied-clients-heading"
+        className="overflow-hidden bg-[#f8f6f3] py-10 sm:py-12"
+      >
+        <div className="container mb-6 text-center">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
+            Perusahaan dan organisasi yang pernah bekerja sama
+          </p>
+          <h2
+            id="satisfied-clients-heading"
+            className="text-xl font-bold text-foreground sm:text-2xl"
+          >
+            Klien Kami
+          </h2>
+        </div>
+        <div className="client-marquee-viewport relative overflow-hidden">
+          <div className="client-marquee-track flex w-max gap-4 px-2">
+            {[0, 1].map((set) => (
+              <div
+                key={set}
+                aria-hidden={set === 1}
+                className="flex shrink-0 gap-4"
+              >
+                {clientLogos.map((client) => (
+                  <div
+                    key={`${set}-${client.src}`}
+                    className="flex h-[100px] w-[210px] shrink-0 items-center justify-center rounded-2xl border border-black/5 bg-white px-6 py-4 shadow-sm sm:w-[240px]"
+                  >
+                    <img
+                      src={client.src}
+                      alt={set === 0 ? client.name : ""}
+                      className="max-h-[64px] max-w-full object-contain"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#f8f6f3] to-transparent sm:w-16" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#f8f6f3] to-transparent sm:w-16" />
         </div>
       </section>
 
@@ -897,8 +915,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Desktop Grid View */}
-          <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 opacity-0 animate-fade-up">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 opacity-0 animate-fade-up">
             {armadaCars.map((car, index) => {
               const whatsappMessage = `Halo, saya tertarik dengan ${car.name} kapasitas ${car.capacity}. Bisa info lebih detail?`;
               const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -959,90 +976,14 @@ const HomePage = () => {
             })}
           </div>
 
-          {/* Mobile Carousel View */}
-          <div className="md:hidden px-4 opacity-0 animate-fade-up">
-            <Carousel
-              className="w-full touch-pan-y"
-              opts={{
-                align: "start",
-                loop: true,
-                containScroll: "trimSnaps",
-                skipSnaps: false,
-              }}
-              plugins={[]}
-            >
-              <CarouselContent className="ml-0">
-                {armadaCars.map((car, index) => {
-                  const whatsappMessage = `Halo, saya tertarik dengan ${car.name} kapasitas ${car.capacity}. Bisa info lebih detail?`;
-                  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                    whatsappMessage
-                  )}`;
-
-                  return (
-                    <CarouselItem
-                      key={`${car.name}-${index}`}
-                      className="basis-2/3 pl-0"
-                    >
-                      <div className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated mx-2">
-                        <div className="aspect-square overflow-hidden bg-muted p-3">
-                          <img
-                            src={car.image}
-                            alt={car.name}
-                            className="h-full w-full object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
-                          />
-                        </div>
-                        <div className="p-3">
-                          <h3 className="mb-1 text-sm font-semibold text-foreground">
-                            {car.name}
-                          </h3>
-                          <div className="text-xs text-primary font-medium mb-2">
-                            {car.capacity}
-                          </div>
-                          <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-                            {car.description}
-                          </p>
-                          <div className="flex gap-2">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="flex-1 text-xs h-8"
-                              asChild
-                            >
-                              <Link to={`/armada#${car.slug}`}>Detail</Link>
-                            </Button>
-                            <Button
-                              variant="whatsapp"
-                              size="sm"
-                              className="flex-1 text-xs h-8"
-                              asChild
-                            >
-                              <a
-                                href={whatsappLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <MessageCircle className="h-3 w-3 mr-1" />
-                                Pesan
-                              </a>
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-            </Carousel>
-          </div>
-
           <div className="mt-6 text-center opacity-0 animate-fade-up delay-300">
-            <p className="mb-3 text-xs text-muted-foreground">
-              Butuh sewa lepas kunci?
+            <p className="mb-3 text-sm text-muted-foreground">
+              Tidak menemukan armada yang kamu cari?
             </p>
             <Button variant="outline" size="sm" asChild>
               <Link to="/armada">
-                Lihat Armada Lepas Kunci
-                <ArrowRight className="h-3 w-3" />
+                Lihat Armada Lengkap
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -1061,8 +1002,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          {/* Desktop Grid View */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 opacity-0 animate-fade-up">
+          <div className="grid grid-cols-1 gap-4 opacity-0 animate-fade-up sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {videoFiles.map((video, index) => (
               <CustomVideoPlayer
                 key={index}
@@ -1072,41 +1012,9 @@ const HomePage = () => {
                 isCurrentlyPlaying={currentlyPlayingVideo === index}
                 onPlay={handleVideoPlay}
                 onPause={handleVideoPause}
-                maxHeight="400px"
+                maxHeight="300px"
               />
             ))}
-          </div>
-
-          {/* Mobile Carousel View */}
-          <div className="md:hidden px-4 opacity-0 animate-fade-up">
-            <Carousel
-              className="w-full touch-pan-y"
-              opts={{
-                align: "start",
-                loop: true,
-                containScroll: "trimSnaps",
-                skipSnaps: false,
-              }}
-              plugins={[]}
-            >
-              <CarouselContent className="ml-0">
-                {videoFiles.map((video, index) => (
-                  <CarouselItem key={index} className="basis-4/5 pl-0">
-                    <div className="mx-2">
-                      <CustomVideoPlayer
-                        src={video.src}
-                        title={video.title}
-                        videoIndex={index}
-                        isCurrentlyPlaying={currentlyPlayingVideo === index}
-                        onPlay={handleVideoPlay}
-                        onPause={handleVideoPause}
-                        maxHeight="300px"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
           </div>
         </div>
       </section>

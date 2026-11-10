@@ -1,19 +1,22 @@
-import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import {
-  Menu,
-  X,
-  Phone,
-  ChevronDown,
-  ChevronRight,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
+import { Phone, ChevronDown, ChevronRight } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Navbar as ResizableNavbar,
+  NavBody,
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
 import logoImage from "/logo.png";
 
 type NavItem =
@@ -77,135 +80,41 @@ export function Navbar() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/75">
-      <div className="container flex h-[72px] items-center justify-between">
-        <Link to="/" className="flex items-center">
-          <img
-            src={logoImage}
+    <header className="relative z-50 h-[72px] w-full">
+      <ResizableNavbar className="fixed inset-x-0 top-3 z-50 w-full border-0 bg-transparent px-3">
+        <NavBody className="relative z-[60] hidden w-full max-w-7xl flex-row items-center justify-between rounded-full border border-border/60 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-md lg:flex">
+          <NavbarLogo
+            href="/"
+            logoSrc={logoImage}
             alt="Sewa Mobil Surabaya"
-            className="h-11 w-auto object-contain max-w-none sm:h-12"
+            brandName=""
           />
-        </Link>
 
-        <nav className="hidden items-center gap-1 xl:flex">
-          {navItems.map((link) => {
-            if ("submenu" in link) {
-              return (
-                <DropdownMenu key={link.label}>
-                  <DropdownMenuTrigger
-                    className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13px] font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`}
-                  >
-                    {link.label}
-                    <ChevronDown className="h-4 w-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-64">
-                    {link.submenu.map((item) => (
-                      <DropdownMenuItem key={item.label} asChild className="p-0">
-                        <Link
-                          to={item.href}
-                          className="flex w-full items-center justify-between rounded-sm px-2 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground"
-                        >
-                          <span>{item.label}</span>
-                          <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              );
-            }
-
-            if (link.external) {
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkClassName()}
-                >
-                  {link.label}
-                </a>
-              );
-            }
-
-            return (
-              <Link key={link.href} to={link.href} className={linkClassName(link.href)}>
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="hidden items-center gap-3 xl:flex">
-          <a
-            href={`tel:+${WHATSAPP_NUMBER}`}
-            className="flex items-center gap-2 text-sm font-medium text-foreground"
-          >
-            <Phone className="h-4 w-4 text-primary" />
-            <span>+62 853-7329-3935</span>
-          </a>
-          <Button variant="cta" size="default" className="rounded-full px-5" asChild>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              Konsultasi Gratis
-            </a>
-          </Button>
-        </div>
-
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary xl:hidden"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
-      {isOpen && (
-        <div className="border-t border-border bg-background xl:hidden">
-          <nav className="container flex max-h-[calc(100vh-73px)] flex-col gap-2 overflow-y-auto overscroll-contain py-4">
+          <nav className="flex items-center gap-0.5">
             {navItems.map((link) => {
               if ("submenu" in link) {
-                const isOpenMenu = openMobileMenu === link.label;
-
                 return (
-                  <div key={link.label} className="rounded-lg border border-border/60 bg-secondary/20">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setOpenMobileMenu(isOpenMenu ? null : link.label)
-                      }
-                      className="flex w-full items-center justify-between px-4 py-3 text-left text-base font-medium text-foreground"
+                  <DropdownMenu key={link.label}>
+                    <DropdownMenuTrigger
+                      className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13px] font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
                     >
-                      <span>{link.label}</span>
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
-                          isOpenMenu ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {isOpenMenu && (
-                      <div className="border-t border-border/60 px-3 py-3">
-                        <div className="space-y-1">
-                          {link.submenu.map((item) => (
-                            <Link
-                              key={item.label}
-                              to={item.href}
-                              onClick={() => {
-                                setIsOpen(false);
-                                setOpenMobileMenu(null);
-                              }}
-                              className="flex items-center justify-between rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                            >
-                              <span>{item.label}</span>
-                              <ChevronRight className="h-4 w-4" />
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                      {link.label}
+                      <ChevronDown className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="w-64">
+                      {link.submenu.map((item) => (
+                        <DropdownMenuItem key={item.label} asChild className="p-0">
+                          <Link
+                            to={item.href}
+                            className="flex w-full items-center justify-between rounded-sm px-2 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground"
+                          >
+                            <span>{item.label}</span>
+                            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 );
               }
 
@@ -216,8 +125,7 @@ export function Navbar() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                    className={mobileLinkClassName()}
+                    className={linkClassName()}
                   >
                     {link.label}
                   </a>
@@ -225,31 +133,139 @@ export function Navbar() {
               }
 
               return (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={mobileLinkClassName(link.href)}
-                >
+                <Link key={link.href} to={link.href} className={linkClassName(link.href)}>
                   {link.label}
                 </Link>
               );
             })}
-
-            <div className="mt-4 border-t border-border pt-4">
-              <Button variant="cta" size="lg" className="w-full" asChild>
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Konsultasi Gratis via WhatsApp
-                </a>
-              </Button>
-            </div>
           </nav>
-        </div>
-      )}
+
+          <div className="hidden items-center gap-3 xl:flex">
+            <a
+              href={`tel:+${WHATSAPP_NUMBER}`}
+              className="flex items-center gap-2 text-sm font-medium text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              <span>+62 853-7329-3935</span>
+            </a>
+            <NavbarButton
+              href={WHATSAPP_LINK}
+              variant="primary"
+              className="rounded-full px-5 text-sm font-semibold"
+            >
+              Konsultasi Gratis
+            </NavbarButton>
+          </div>
+        </NavBody>
+
+        <MobileNav className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-full border border-border/60 bg-white/80 px-2 py-2 shadow-sm backdrop-blur-md lg:hidden">
+          <MobileNavHeader className="flex w-full items-center justify-between gap-3">
+            <NavbarLogo
+              href="/"
+              logoSrc={logoImage}
+              alt="Sewa Mobil Surabaya"
+              brandName=""
+            />
+            <MobileNavToggle
+              isOpen={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
+            />
+          </MobileNavHeader>
+
+          <MobileNavMenu
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+            className="top-16 rounded-2xl border border-border/60 bg-white/95 p-4 shadow-lg"
+          >
+            <nav className="flex w-full flex-col gap-2">
+              {navItems.map((link) => {
+                if ("submenu" in link) {
+                  const isOpenMenu = openMobileMenu === link.label;
+
+                  return (
+                    <div
+                      key={link.label}
+                      className="rounded-xl border border-border/60 bg-secondary/20"
+                    >
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenMobileMenu(isOpenMenu ? null : link.label)
+                        }
+                        className="flex w-full items-center justify-between px-4 py-3 text-left text-base font-medium text-foreground"
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            isOpenMenu ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {isOpenMenu && (
+                        <div className="border-t border-border/60 px-3 py-3">
+                          <div className="space-y-1">
+                            {link.submenu.map((item) => (
+                              <Link
+                                key={item.label}
+                                to={item.href}
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setOpenMobileMenu(null);
+                                }}
+                                className="flex items-center justify-between rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                              >
+                                <span>{item.label}</span>
+                                <ChevronRight className="h-4 w-4" />
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                if (link.external) {
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                      className={mobileLinkClassName()}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={mobileLinkClassName(link.href)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+
+              <div className="mt-2 border-t border-border pt-4">
+                <NavbarButton
+                  href={WHATSAPP_LINK}
+                  variant="primary"
+                  className="w-full rounded-full px-5 text-sm font-semibold"
+                >
+                  Konsultasi Gratis
+                </NavbarButton>
+              </div>
+            </nav>
+          </MobileNavMenu>
+        </MobileNav>
+      </ResizableNavbar>
     </header>
   );
 }

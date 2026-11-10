@@ -129,6 +129,14 @@
 }
 
 @layer utilities {
+  .client-marquee-track {
+    animation: clientMarquee 36s linear infinite;
+  }
+
+  .client-marquee-viewport:hover .client-marquee-track {
+    animation-play-state: paused;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -375,6 +383,22 @@
   .hardware-layer {
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+  }
+}
+
+@keyframes clientMarquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee-viewport {
+    overflow-x: auto;
+  }
+
+  .client-marquee-track {
+    animation: none;
   }
 }
 
