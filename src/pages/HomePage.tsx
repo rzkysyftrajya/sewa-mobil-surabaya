@@ -945,11 +945,11 @@ const HomePage = () => {
                     <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
                       {car.description}
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex min-w-0 gap-1">
                       <Button
                         variant="outline"
                         size="sm"
-                        className="flex-1 text-xs h-8"
+                        className="min-w-0 flex-1 px-2 text-xs h-8"
                         asChild
                       >
                         <Link to={`/armada#${car.slug}`}>Detail</Link>
@@ -957,7 +957,7 @@ const HomePage = () => {
                       <Button
                         variant="whatsapp"
                         size="sm"
-                        className="flex-1 text-xs h-8"
+                        className="min-w-0 flex-1 gap-1 px-2 text-xs h-8"
                         asChild
                       >
                         <a
@@ -965,7 +965,7 @@ const HomePage = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <MessageCircle className="h-3 w-3 mr-1" />
+                          <MessageCircle className="h-3 w-3" />
                           Pesan
                         </a>
                       </Button>
