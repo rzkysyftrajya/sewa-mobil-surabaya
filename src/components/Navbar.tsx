@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, ChevronDown, ChevronRight } from "lucide-react";
+import { Phone, ChevronDown, ChevronRight, TreePine } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,6 +18,7 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import logoImage from "/logo.png";
+import { isNataruSeason } from "@/lib/nataru";
 
 type NavItem =
   | {
@@ -81,6 +82,29 @@ export function Navbar() {
 
   return (
     <header className="relative z-50 h-[72px] w-full">
+      {isNataruSeason() && (
+        <div className="nataru-header-garland" aria-hidden="true">
+          <svg
+            className="nataru-header-wire"
+            viewBox="0 0 1600 72"
+            preserveAspectRatio="none"
+          >
+            <path d="M0 8 C100 8 110 52 200 52 S300 8 400 8 S500 52 600 52 S700 8 800 8 S900 52 1000 52 S1100 8 1200 8 S1300 52 1400 52 S1500 8 1600 8" />
+          </svg>
+          {Array.from({ length: 10 }, (_, index) => (
+            <TreePine
+              key={index}
+              className={`nataru-header-tree nataru-header-tree-${index + 1}`}
+            />
+          ))}
+          {Array.from({ length: 8 }, (_, index) => (
+            <span
+              key={index}
+              className={`nataru-header-light nataru-header-light-${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
       <ResizableNavbar className="fixed inset-x-0 top-3 z-50 w-full border-0 bg-transparent px-3">
         <NavBody className="relative z-[60] hidden w-full max-w-7xl flex-row items-center justify-between rounded-full border border-border/60 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-md lg:flex">
           <NavbarLogo

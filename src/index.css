@@ -1348,6 +1348,71 @@
 .nataru-page-snowflake-11 { left: 57%; animation-delay: -6s; animation-duration: 20s; }
 .nataru-page-snowflake-12 { left: 27%; width: 10px; height: 10px; animation-delay: -15s; animation-duration: 17s; }
 
+.nataru-header-garland {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 55;
+  height: 70px;
+  pointer-events: none;
+}
+
+.nataru-header-wire {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 70px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.18));
+}
+
+.nataru-header-wire path {
+  fill: none;
+  stroke: #14532d;
+  stroke-linecap: round;
+  stroke-width: 4px;
+}
+
+.nataru-header-tree {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  fill: #166534;
+  color: #bbf7d0;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.25));
+}
+
+.nataru-header-tree-1 { top: 0; left: 3%; transform: rotate(-12deg); }
+.nataru-header-tree-2 { top: 0; left: 12%; transform: rotate(12deg); }
+.nataru-header-tree-3 { top: 0; left: 21%; transform: rotate(-8deg); }
+.nataru-header-tree-4 { top: 0; left: 31%; transform: rotate(10deg); }
+.nataru-header-tree-5 { top: 0; left: 41%; transform: rotate(-10deg); }
+.nataru-header-tree-6 { top: 0; left: 51%; transform: rotate(12deg); }
+.nataru-header-tree-7 { top: 0; left: 61%; transform: rotate(-8deg); }
+.nataru-header-tree-8 { top: 0; left: 71%; transform: rotate(10deg); }
+.nataru-header-tree-9 { top: 0; left: 81%; transform: rotate(-12deg); }
+.nataru-header-tree-10 { top: 22px; left: 91%; transform: rotate(8deg); }
+
+.nataru-header-light {
+  position: absolute;
+  top: 46px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgb(255 255 255 / 0.8);
+  border-radius: 50%;
+  background: #ffe082;
+  box-shadow: 0 0 10px 2px rgb(255 224 130 / 0.75);
+  animation: nataru-twinkle 1.8s ease-in-out infinite;
+}
+
+.nataru-header-light-1 { left: 8%; background: #f87171; animation-delay: 150ms; }
+.nataru-header-light-2 { left: 24%; background: #ffe082; animation-delay: 500ms; }
+.nataru-header-light-3 { left: 39%; background: #4ade80; animation-delay: 850ms; }
+.nataru-header-light-4 { left: 54%; background: #ffe082; animation-delay: 1.2s; }
+.nataru-header-light-5 { left: 69%; background: #f87171; animation-delay: 300ms; }
+.nataru-header-light-6 { left: 84%; background: #4ade80; animation-delay: 700ms; }
+.nataru-header-light-7 { left: 94%; background: #ffe082; animation-delay: 1s; }
+.nataru-header-light-8 { left: 48%; top: 8px; background: #f87171; animation-delay: 400ms; }
+
 @keyframes nataru-banner-entrance {
   from { opacity: 0; transform: translateY(24px) scale(0.985); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -1393,6 +1458,24 @@
   .nataru-page-snowflake:nth-child(n + 8) {
     display: none;
   }
+
+  .nataru-header-tree-4,
+  .nataru-header-tree-5,
+  .nataru-header-tree-6,
+  .nataru-header-tree-7,
+  .nataru-header-tree-8 {
+    display: none;
+  }
+
+  .nataru-header-tree {
+    width: 19px;
+    height: 19px;
+  }
+
+  .nataru-header-light {
+    width: 6px;
+    height: 6px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1403,6 +1486,7 @@
   .nataru-tree-star,
   .nataru-ornament,
   .nataru-gift-2,
+  .nataru-header-light,
   .nataru-page-snowflake {
     animation: none !important;
     transition: none !important;
