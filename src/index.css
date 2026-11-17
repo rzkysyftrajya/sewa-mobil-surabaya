@@ -1351,7 +1351,7 @@
 .nataru-header-garland {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 55;
+  z-index: 40;
   height: 70px;
   pointer-events: none;
 }

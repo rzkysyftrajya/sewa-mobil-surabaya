@@ -106,7 +106,7 @@ export function Navbar() {
         </div>
       )}
       <ResizableNavbar className="fixed inset-x-0 top-3 z-50 w-full border-0 bg-transparent px-3">
-        <NavBody className="relative z-[60] hidden w-full max-w-7xl flex-row items-center justify-between rounded-full border border-border/60 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-md lg:flex">
+        <NavBody className="relative z-[60] hidden w-full max-w-7xl flex-row items-center justify-between rounded-full border border-border/60 bg-white/95 px-4 py-2 shadow-sm backdrop-blur-md lg:flex">
           <NavbarLogo
             href="/"
             logoSrc={logoImage}
@@ -182,7 +182,7 @@ export function Navbar() {
           </div>
         </NavBody>
 
-        <MobileNav className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-full border border-border/60 bg-white/80 px-2 py-2 shadow-sm backdrop-blur-md lg:hidden">
+        <MobileNav className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-full border border-border/60 bg-white/95 px-2 py-2 shadow-sm backdrop-blur-md lg:hidden">
           <MobileNavHeader className="flex w-full items-center justify-between gap-3">
             <NavbarLogo
               href="/"
