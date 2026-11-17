@@ -86,10 +86,10 @@ export function Navbar() {
         <div className="nataru-header-garland" aria-hidden="true">
           <svg
             className="nataru-header-wire"
-            viewBox="0 0 1600 72"
+            viewBox="0 0 1600 30"
             preserveAspectRatio="none"
           >
-            <path d="M0 8 C100 8 110 52 200 52 S300 8 400 8 S500 52 600 52 S700 8 800 8 S900 52 1000 52 S1100 8 1200 8 S1300 52 1400 52 S1500 8 1600 8" />
+            <path d="M0 4 C100 4 110 18 200 18 S300 4 400 4 S500 18 600 18 S700 4 800 4 S900 18 1000 18 S1100 4 1200 4 S1300 18 1400 18 S1500 4 1600 4" />
           </svg>
           {Array.from({ length: 10 }, (_, index) => (
             <TreePine
@@ -106,7 +106,7 @@ export function Navbar() {
         </div>
       )}
       <ResizableNavbar className="fixed inset-x-0 top-3 z-50 w-full border-0 bg-transparent px-3">
-        <NavBody className="relative z-[60] hidden w-full max-w-7xl flex-row items-center justify-between rounded-full border border-border/60 bg-white/95 px-4 py-2 shadow-sm backdrop-blur-md lg:flex">
+        <NavBody className="relative z-[60] hidden w-full max-w-7xl flex-row items-center justify-between rounded-full border border-border/60 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-md lg:flex">
           <NavbarLogo
             href="/"
             logoSrc={logoImage}
@@ -182,7 +182,7 @@ export function Navbar() {
           </div>
         </NavBody>
 
-        <MobileNav className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-full border border-border/60 bg-white/95 px-2 py-2 shadow-sm backdrop-blur-md lg:hidden">
+        <MobileNav className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-full border border-border/60 bg-white/80 px-2 py-2 shadow-sm backdrop-blur-md lg:hidden">
           <MobileNavHeader className="flex w-full items-center justify-between gap-3">
             <NavbarLogo
               href="/"

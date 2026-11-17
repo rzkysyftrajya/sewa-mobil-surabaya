@@ -1351,8 +1351,8 @@
 .nataru-header-garland {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 40;
-  height: 70px;
+  z-index: 55;
+  height: 30px;
   pointer-events: none;
 }
 
@@ -1360,7 +1360,7 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 70px;
+  height: 30px;
   overflow: visible;
   filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.18));
 }
@@ -1374,8 +1374,8 @@
 
 .nataru-header-tree {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   fill: #166534;
   color: #bbf7d0;
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.25));
@@ -1390,13 +1390,13 @@
 .nataru-header-tree-7 { top: 0; left: 61%; transform: rotate(-8deg); }
 .nataru-header-tree-8 { top: 0; left: 71%; transform: rotate(10deg); }
 .nataru-header-tree-9 { top: 0; left: 81%; transform: rotate(-12deg); }
-.nataru-header-tree-10 { top: 22px; left: 91%; transform: rotate(8deg); }
+.nataru-header-tree-10 { top: 0; left: 91%; transform: rotate(8deg); }
 
 .nataru-header-light {
   position: absolute;
-  top: 46px;
-  width: 8px;
-  height: 8px;
+  top: 22px;
+  width: 7px;
+  height: 7px;
   border: 1px solid rgb(255 255 255 / 0.8);
   border-radius: 50%;
   background: #ffe082;
@@ -1468,13 +1468,24 @@
   }
 
   .nataru-header-tree {
-    width: 19px;
-    height: 19px;
+    width: 15px;
+    height: 15px;
   }
 
   .nataru-header-light {
     width: 6px;
     height: 6px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nataru-header-tree-1,
+  .nataru-header-tree-2,
+  .nataru-header-tree-9,
+  .nataru-header-tree-10,
+  .nataru-header-light-1,
+  .nataru-header-light-7 {
+    display: none;
   }
 }
 
