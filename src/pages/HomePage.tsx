@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import NataruExperience from "@/components/NataruExperience";
 import {
   Accordion,
   AccordionContent,
@@ -671,6 +672,8 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      <NataruExperience />
 
       <section
         aria-labelledby="satisfied-clients-heading"
